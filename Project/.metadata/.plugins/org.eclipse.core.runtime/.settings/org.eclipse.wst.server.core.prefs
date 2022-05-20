@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+module-start-timeout=300000
+runtimes=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<runtimes>\r\n  <runtime id\="Oracle WebLogic Server 12c (12.1.3)" location\="E\:/Company/Tools/Oracle/wlserver" name\="Oracle WebLogic Server 12c (12.1.3)" runtime-type-id\="com.bea.weblogic1213" timestamp\="3" wl-java-home\="C\:\\Program Files\\Java\\jre7"/>\r\n</runtimes>\r\n

@@ -1,0 +1,12 @@
+Connection.OWNER=C\#\#ONE
+Connection.PASSWORD=C\#\#ONE
+Connection.URL=jdbc\:oracle\:thin\:@10.0.0.14\:1521\:ORCL
+Connection.USERNAME=C\#\#ONE
+Project.Application.Project=OPUS_CONTAINER_4_0_IZA
+Project.DEVELOPER_EN=Thien
+Project.SubSystem=clv
+Project.System=esm
+Project.Web.Project=OPUS_CONTAINER_4_0_IZA
+Velocity_Template=E\:/Company/Project/OPUS_CONTAINER_4_0_IZA/APP-INF/config/template/
+eclipse.preferences.version=1
+mapping.xml=clv

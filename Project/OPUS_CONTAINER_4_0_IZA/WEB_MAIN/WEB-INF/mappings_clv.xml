@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://www.cyberlogitec.com/mappings">
+	<!-- Thien : 2022-05-13 start -->
+    <url-mapping url="PRAC_TRN_001.do" screen="PRAC_TRN_001.screen" >
+        <web-action-class>com.clt.apps.opus.esm.clv.thientraining.errmsgmgmt.event.PRAC_TRN_001HTMLAction</web-action-class>
+    </url-mapping>
+
+    <url-mapping url="PRAC_TRN_001GS.do" screen="com.clt.framework.core.controller.DefaultViewAdapter" >
+        <web-action-class>com.clt.apps.opus.esm.clv.thientraining.errmsgmgmt.event.PRAC_TRN_001HTMLAction</web-action-class>
+    </url-mapping>
+
+    <event-mapping>
+        <event-class>com.clt.apps.opus.esm.clv.thientraining.errmsgmgmt.event.PracTrn001Event</event-class>
+        <service-action-class>com.clt.apps.opus.esm.clv.thientraining.ThienTrainingSC</service-action-class>
+    </event-mapping>
+	<!-- Thien : 2022-05-13 end -->
+
+</mappings>

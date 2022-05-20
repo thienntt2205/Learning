@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.clt.apps.opus.esm.clv.thientraining.errmsgmgmt.vo.ErrMsgVO"/>
+<fullyQualifiedTypeName name="com.clt.framework.component.util.JSPUtil"/>
+<fullyQualifiedTypeName name="com.clt.apps.opus.esm.clv.thientraining.errmsgmgmt.basic.ErrMsgMgmtBCImpl.MsgDupExeption"/>
+<fullyQualifiedTypeName name="com.clt.framework.core.layer.event.EventException"/>
+<fullyQualifiedTypeName name="com.clt.framework.component.message.ErrorHandler"/>
+</qualifiedTypeNameHistroy>
