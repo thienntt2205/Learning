@@ -1,9 +1,0 @@
-package com.clt.apps.opus.esm.clv.thientraining.errmsgmgmt.vo;
-
-
-import java.util.HashMap;
-
-public class ErrMsgVO {
-
-public HashMap<String, String> getColumnValues(){return new HashMap<String, String>();}
-}
