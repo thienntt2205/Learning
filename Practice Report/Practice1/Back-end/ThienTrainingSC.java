@@ -5,9 +5,9 @@
  *Open Issues :
  *Change history :
  *@LastModifyDate : 2022.05.13
- *@LastModifier : 
+ *@LastModifier :
  *@LastVersion : 1.0
- * 2022.05.13 
+ * 2022.05.13
  * 1.0 Creation
 =========================================================*/
 package com.clt.apps.opus.esm.clv.thientraining;
@@ -27,9 +27,10 @@ import com.clt.framework.support.view.signon.SignOnUserAccount;
 import com.clt.apps.opus.esm.clv.thientraining.errmsgmgmt.vo.ErrMsgVO;
 
 /**
- * ALPS-ThienTraining Business Logic ServiceCommand - ALPS-ThienTraining 대한 비지니스
- * 트랜잭션을 처리한다.
- * 
+ * ALPS-ThienTraining Business Logic ServiceCommand - ALPS-ThienTraining Daehan
+ * Business
+ * process the transaction.
+ *
  * @author Thien
  * @see ErrMsgMgmtDBDAO
  * @since J2EE 1.6
@@ -40,13 +41,13 @@ public class ThienTrainingSC extends ServiceCommandSupport {
 	private SignOnUserAccount account = null;
 
 	/**
-	 * ThienTraining system 업무 시나리오 선행작업<br>
-	 * 업무 시나리오 호출시 관련 내부객체 생성<br>
+	 * ThienTraining system Preceding work scenario<br>
+	 * Creating related internal objects when calling a business scenario<br>
 	 */
 	public void doStart() {
 		log.debug("ThienTrainingSC 시작");
 		try {
-			// 일단 comment --> 로그인 체크 부분
+			// First comment --> login check box
 			account = getSignOnUserAccount();
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
@@ -54,19 +55,19 @@ public class ThienTrainingSC extends ServiceCommandSupport {
 	}
 
 	/**
-	 * ThienTraining system 업무 시나리오 마감작업<br>
-	 * 업무 시나리오 종료시 관련 내부객체 해제<br>
+	 * ThienTraining system Closing the work scenario<br>
+	 * Release related internal objects at the end of the business scenario<br>
 	 */
 	public void doEnd() {
 		log.debug("ThienTrainingSC 종료");
 	}
 
 	/**
-	 * 각 이벤트에 해당하는 업무 시나리오 수행<br>
-	 * ALPS-ThienTraining system 업무에서 발생하는 모든 이벤트의 분기처리<br>
-	 * 
-	 * @param e
-	 *            Event
+	 * Carry out business scenarios corresponding to each event<br>
+	 * ALPS-ThienTraining system Branch processing of all events occurring in
+	 * business<br>
+	 *
+	 * @param e Event
 	 * @return EventResponse
 	 * @exception EventException
 	 */
@@ -74,23 +75,25 @@ public class ThienTrainingSC extends ServiceCommandSupport {
 		// RDTO(Data Transfer Object including Parameters)
 		EventResponse eventResponse = null;
 
-		// SC가 여러 이벤트를 처리하는 경우 사용해야 할 부분
+		// SC The part you should use if you are handling multiple events
 		if (e.getEventName().equalsIgnoreCase("PracTrn001Event")) {
 			if (e.getFormCommand().isCommand(FormCommand.SEARCH)) {
+				// define variable eventResponse = searchErrMsg(e) (function search VO)
 				eventResponse = searchErrMsg(e);
 			} else if (e.getFormCommand().isCommand(FormCommand.MULTI)) {
+				// define variable eventResponse = manageErrMsg(e) (function multi VO)
 				eventResponse = manageErrMsg(e);
 			}
 		}
+		// return result eventResponse
 		return eventResponse;
 	}
 
 	/**
-	 * PRAC_TRN_001 : [이벤트]<br>
-	 * [비즈니스대상]을 [행위]합니다.<br>
-	 * 
-	 * @param Event
-	 *            e
+	 * PRAC_TRN_001 : [event]<br>
+	 * [business award]second [Act].<br>
+	 *
+	 * @param e Event
 	 * @return EventResponse
 	 * @exception EventException
 	 */
@@ -112,32 +115,45 @@ public class ThienTrainingSC extends ServiceCommandSupport {
 	}
 
 	/**
-	 * PRAC_TRN_001 : [이벤트]<br>
-	 * [비즈니스대상]을 [행위]합니다.<br>
+	 * PRAC_TRN_001 : [event]<br>
+	 * [Act] for [Business Target].<br>
 	 *
 	 * @param Event
-	 *            e
+	 *              e
 	 * @return EventResponse
 	 * @exception EventException
 	 */
 	private EventResponse manageErrMsg(Event e) throws EventException {
 		// PDTO(Data Transfer Object including Parameters)
+		// Declare an eventResponse type variable
 		GeneralEventResponse eventResponse = new GeneralEventResponse();
+		// Define PracTrn001Event event variable = (PracTrn001Event) e
 		PracTrn001Event event = (PracTrn001Event) e;
+		// Declare ErrMsgMgmtBC command(business component) variable
 		ErrMsgMgmtBC command = new ErrMsgMgmtBCImpl();
+		// Start try-cath
 		try {
+			// start a transaction
 			begin();
+			// to modify list of ErrMsgVo to database(insert, update, delete)
 			command.manageErrMsg(event.getErrMsgVOS(), account);
 			eventResponse.setUserMessage(new ErrorHandler("XXXXXXXXX")
 					.getUserMessage());
+			// Accept modify, end transaction
 			commit();
+			// detect exception => action
 		} catch (EventException ex) {
+			// cancel transaction
 			rollback();
+			// Output an EventExeption msg
 			throw new EventException(new ErrorHandler(ex).getMessage(), ex);
 		} catch (Exception ex) {
+			// detect exception => action
 			rollback();
+			// Output an EventExeption msg
 			throw new EventException(new ErrorHandler(ex).getMessage(), ex);
 		}
+		// return result (eventResponse)
 		return eventResponse;
 	}
 }
