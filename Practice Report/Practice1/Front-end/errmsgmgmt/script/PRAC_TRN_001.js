@@ -5,9 +5,9 @@
  *Open Issues :
  *Change history :
  *@LastModifyDate : 2022.05.13
- *@LastModifier : 
+ *@LastModifier :
  *@LastVersion : 1.0
- * 2022.05.13 
+ * 2022.05.13
  * 1.0 Creation
 =========================================================*/
 /****************************************************************************************
@@ -41,20 +41,20 @@ function processButtonClick() {
 			return;
 		}
 		switch (srcName) {
-		case "btn_Retrieve":
-			doActionIBSheet(sheetObject1, formObj, IBSEARCH);
-			break;
-		case "btn_Save":
-			doActionIBSheet(sheetObject1, formObj, IBSAVE);
-			break;
-		case "btn_DownExcel":
-			doActionIBSheet(sheetObject1, formObj, IBDOWNEXCEL);
-			break;
-		case "btn_Add":
-			doActionIBSheet(sheetObject1, formObj, IBINSERT);
-			break;
-		default:
-			break;
+			case "btn_Retrieve":
+				doActionIBSheet(sheetObject1, formObj, IBSEARCH);
+				break;
+			case "btn_Save":
+				doActionIBSheet(sheetObject1, formObj, IBSAVE);
+				break;
+			case "btn_DownExcel":
+				doActionIBSheet(sheetObject1, formObj, IBDOWNEXCEL);
+				break;
+			case "btn_Add":
+				doActionIBSheet(sheetObject1, formObj, IBINSERT);
+				break;
+			default:
+				break;
 		}
 	} catch (e) {
 		if (e == "[object Error]") {
@@ -80,126 +80,126 @@ function loadPage() {
 function initSheet(sheetObj, sheetNo) {
 	var cnt = 0;
 	switch (sheetNo) {
-	case 1: // sheet1 init
-		with (sheetObj) {
+		case 1: // sheet1 init
+			with (sheetObj) {
 
-			var HeadTitle = "STS|Del|Msg Cd|Msg Type|Msg Level|Message|Description";
-			var headCount = ComCountHeadTitle(HeadTitle);
-			// (headCount, 0, 0, true);
+				var HeadTitle = "STS|Del|Msg Cd|Msg Type|Msg Level|Message|Description";
+				var headCount = ComCountHeadTitle(HeadTitle);
+				// (headCount, 0, 0, true);
 
-			SetConfig({
-				SearchMode : 2,
-				MergeSheet : 5,
-				Page : 20,
-				DataRowMerge : 0
-			});
+				SetConfig({
+					SearchMode: 2,
+					MergeSheet: 5,
+					Page: 20,
+					DataRowMerge: 0
+				});
 
-			var info = {
-				Sort : 1,
-				ColMove : 1,
-				HeaderCheck : 0,
-				ColResize : 1
-			};
-			var headers = [ {
-				Text : HeadTitle,
-				Align : "Center"
-			} ];
-			InitHeaders(headers, info);
+				var info = {
+					Sort: 1,
+					ColMove: 1,
+					HeaderCheck: 0,
+					ColResize: 1
+				};
+				var headers = [{
+					Text: HeadTitle,
+					Align: "Center"
+				}];
+				InitHeaders(headers, info);
 
-			var cols = [ {
-				Type : "Status",
-				Hidden : 1,
-				Width : 50,
-				Align : "Center",
-				ColMerge : 0,
-				SaveName : "ibflag"
-			}, {
-				Type : "DelCheck",
-				Hidden : 0,
-				Width : 50,
-				Align : "Center",
-				ColMerge : 0,
-				SaveName : "del_chk"
-			}, {
-				Type : "Text",
-				Hidden : 0,
-				Width : 100,
-				Align : "Center",
-				ColMerge : 0,
-				SaveName : "err_msg_cd",
-				KeyField : 1,
-				Format : "",
-				UpdateEdit : 0,
-				InsertEdit : 1,
-				EditLen : 8
-			}, {
-				Type : "Combo",
-				Hidden : 0,
-				Width : 100,
-				Align : "Center",
-				ColMerge : 0,
-				SaveName : "err_tp_cd",
-				KeyField : 1,
-				Format : "",
-				UpdateEdit : 1,
-				InsertEdit : 1,
-				EditLen : 5,
-				ComboText : "Server|UI|Both",
-				ComboCode : "S|U|B"
-			}, {
-				Type : "Combo",
-				Hidden : 0,
-				Width : 100,
-				Align : "Center",
-				ColMerge : 0,
-				SaveName : "err_lvl_cd",
-				KeyField : 1,
-				Format : "",
-				UpdateEdit : 1,
-				InsertEdit : 1,
-				EditLen : 6,
-				ComboText : "ERR|WARNING|INFO",
-				ComboCode : "E|W|I"
-			}, {
-				Type : "Text",
-				Hidden : 0,
-				Width : 600,
-				Align : "Left",
-				ColMerge : 0,
-				SaveName : "err_msg",
-				KeyField : 1,
-				Format : "",
-				UpdateEdit : 1,
-				InsertEdit : 1
-			// EditLen :
-			}, {
-				Type : "Text",
-				Hidden : 0,
-				Width : 100,
-				Align : "Left",
-				ColMerge : 0,
-				SaveName : "err_desc",
-				KeyField : 1,
-				Format : "",
-				UpdateEdit : 1,
-				InsertEdit : 1
-			// EditLen : 6
-			} ];
+				var cols = [{
+					Type: "Status",
+					Hidden: 1,
+					Width: 50,
+					Align: "Center",
+					ColMerge: 0,
+					SaveName: "ibflag"
+				}, {
+					Type: "DelCheck",
+					Hidden: 0,
+					Width: 50,
+					Align: "Center",
+					ColMerge: 0,
+					SaveName: "del_chk"
+				}, {
+					Type: "Text",
+					Hidden: 0,
+					Width: 100,
+					Align: "Center",
+					ColMerge: 0,
+					SaveName: "err_msg_cd",
+					KeyField: 1,
+					Format: "",
+					UpdateEdit: 0,
+					InsertEdit: 1,
+					EditLen: 8
+				}, {
+					Type: "Combo",
+					Hidden: 0,
+					Width: 100,
+					Align: "Center",
+					ColMerge: 0,
+					SaveName: "err_tp_cd",
+					KeyField: 1,
+					Format: "",
+					UpdateEdit: 1,
+					InsertEdit: 1,
+					EditLen: 5,
+					ComboText: "Server|UI|Both",
+					ComboCode: "S|U|B"
+				}, {
+					Type: "Combo",
+					Hidden: 0,
+					Width: 100,
+					Align: "Center",
+					ColMerge: 0,
+					SaveName: "err_lvl_cd",
+					KeyField: 1,
+					Format: "",
+					UpdateEdit: 1,
+					InsertEdit: 1,
+					EditLen: 6,
+					ComboText: "ERR|WARNING|INFO",
+					ComboCode: "E|W|I"
+				}, {
+					Type: "Text",
+					Hidden: 0,
+					Width: 600,
+					Align: "Left",
+					ColMerge: 0,
+					SaveName: "err_msg",
+					KeyField: 1,
+					Format: "",
+					UpdateEdit: 1,
+					InsertEdit: 1
+					// EditLen :
+				}, {
+					Type: "Text",
+					Hidden: 0,
+					Width: 100,
+					Align: "Left",
+					ColMerge: 0,
+					SaveName: "err_desc",
+					KeyField: 1,
+					Format: "",
+					UpdateEdit: 1,
+					InsertEdit: 1
+					// EditLen : 6
+				}];
 
-			InitColumns(cols);
-			SetEditable(1);
-			// SetColProperty("jo_crr_cd", { AcceptKeys : "E|N",
-			// InputCaseSensitive : 1 });
-			// SetColProperty("vndr_seq", { AcceptKeys : "N"});
-			// SetColProperty("cust_cnt_cd", { AcceptKeys : "E|N",
-			// InputCaseSensitive : 1});
-			// SetColProperty("cust_seq", { AcceptKeys : "N"});
-			// SetColProperty("trd_cd", { AcceptKeys : "E|N", InputCaseSensitive
-			// : 1 });
-			SetWaitImageVisible(0);
-			resizeSheet();
-		}
-		break;
+				InitColumns(cols);
+				SetEditable(1);
+				// SetColProperty("jo_crr_cd", { AcceptKeys : "E|N",
+				// InputCaseSensitive : 1 });
+				// SetColProperty("vndr_seq", { AcceptKeys : "N"});
+				// SetColProperty("cust_cnt_cd", { AcceptKeys : "E|N",
+				// InputCaseSensitive : 1});
+				// SetColProperty("cust_seq", { AcceptKeys : "N"});
+				// SetColProperty("trd_cd", { AcceptKeys : "E|N", InputCaseSensitive
+				// : 1 });
+				SetWaitImageVisible(0);
+				resizeSheet();
+			}
+			break;
 	}
 
 }
@@ -222,48 +222,48 @@ function doActionIBSheet(sheetObj, formObj, sAction) {
 	// return false;
 	// }
 	switch (sAction) {
-	case IBSEARCH: // retrieve
-		
-		// set command for search funtion
-		formObj.f_cmd.value = SEARCH;
-		// ComOpenWait:configure whether a loading image will appears and lock the screen
-		// true: lock the screen.
-		// false: return normal.
-		ComOpenWait(true);
-		//DoSearch = GetSearch + LoadSearch
-		sheetObj.DoSearch("PRAC_TRN_001GS.do", FormQueryString(formObj));
-		// var sParam=FormQueryString(formObj);
-		// var sXml=sheetObj.GetSearchData("DOU_TRN_001GS.do", sParam);
-		// sheetObj.LoadSearchData(sXml,{Sync:1});
-		break;
-	case IBSAVE: // Save
-		formObj.f_cmd.value = MULTI;
-		// Call input valid function to check before save "0" is set default Doaction not to check again
-		if (validateForm(sheetObj, formObj, 0)) {
-			sheetObj.DoSave("PRAC_TRN_001GS.do", FormQueryString(formObj));
-		}
-		break;
-	case IBINSERT: // Row Add button event
-		sheetObj.DataInsert();
-		break;
-	// case IBDELETE: // Row Delete button event
-	// for (var i = sheetObj.LastRow(); i >= sheetObj.HeaderRows(); i--) {
-	// if (sheetObj.GetCellValue(i, "del_chk") == 1) {
-	// sheetObj.SetRowHidden(i, 1);
-	// sheetObj.SetRowStatus(i, "D");
-	// }
-	// }
-	// break;
-	case IBDOWNEXCEL: // downexcel
-		sheetObj.Down2Excel({
-			Filename : 'getexcel',
-			SheetName : 'main',
-			DownCols : '2|3|4|5|6'
-		});
-		break;
-	// case IBADDROW: // addrow to current line
-	// sheetObj.DataInsert();
-	// break;
+		case IBSEARCH: // retrieve
+
+			// set command for search funtion
+			formObj.f_cmd.value = SEARCH;
+			// ComOpenWait:configure whether a loading image will appears and lock the screen
+			// true: lock the screen.
+			// false: return normal.
+			ComOpenWait(true);
+			//DoSearch = GetSearch + LoadSearch
+			sheetObj.DoSearch("PRAC_TRN_001GS.do", FormQueryString(formObj));
+			// var sParam=FormQueryString(formObj);
+			// var sXml=sheetObj.GetSearchData("DOU_TRN_001GS.do", sParam);
+			// sheetObj.LoadSearchData(sXml,{Sync:1});
+			break;
+		case IBSAVE: // Save
+			formObj.f_cmd.value = MULTI;
+			// Call input valid function to check before save "0" is set default Doaction not to check again
+			if (validateForm(sheetObj, formObj, 0)) {
+				sheetObj.DoSave("PRAC_TRN_001GS.do", FormQueryString(formObj));
+			}
+			break;
+		case IBINSERT: // Row Add button event
+			sheetObj.DataInsert();
+			break;
+		// case IBDELETE: // Row Delete button event
+		// for (var i = sheetObj.LastRow(); i >= sheetObj.HeaderRows(); i--) {
+		// if (sheetObj.GetCellValue(i, "del_chk") == 1) {
+		// sheetObj.SetRowHidden(i, 1);
+		// sheetObj.SetRowStatus(i, "D");
+		// }
+		// }
+		// break;
+		case IBDOWNEXCEL: // downexcel
+			sheetObj.Down2Excel({
+				Filename: 'getexcel',
+				SheetName: 'main',
+				DownCols: '2|3|4|5|6'
+			});
+			break;
+		// case IBADDROW: // addrow to current line
+		// sheetObj.DataInsert();
+		// break;
 	}
 }
 
@@ -276,8 +276,8 @@ function validateForm(sheetObj, formObj, sAction) {
 	var regex = new RegExp(regexString);
 	for (var i = sheetObj.LastRow(); i >= sheetObj.HeaderRows(); i--) {
 		if (sheetObj.GetCellValue(i, "ibflag") == 'I'
-				&& !regex.test(sheetObj.GetCellValue(i, "err_msg_cd"))) {
-			ComShowCodeMessage("COM132201","Msg cd");
+			&& !regex.test(sheetObj.GetCellValue(i, "err_msg_cd"))) {
+			ComShowCodeMessage("COM132201", "Msg cd");
 			return false;
 		}
 	}
