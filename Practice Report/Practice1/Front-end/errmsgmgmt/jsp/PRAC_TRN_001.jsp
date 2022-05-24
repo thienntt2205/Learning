@@ -7,9 +7,9 @@
 	 *Open Issues :
 	 *Change history :
 	 *@LastModifyDate : 2022.05.13
-	 *@LastModifier : 
+	 *@LastModifier :
 	 *@LastVersion : 1.0
-	 * 2022.05.13 
+	 * 2022.05.13
 	 * 1.0 Creation
 	 =========================================================*/
 %>
@@ -76,12 +76,10 @@
 		</h2>
 		<div class="opus_design_btn">
 			<button type="button" class="btn_accent" name="btn_Retrieve"
-				id="btn_Retrieve">Retrieve</button>
-			<!--
+				id="btn_Retrieve">Retrieve</button><!--
 		   -->
 			<button type="button" class="btn_normal" name="btn_Save"
-				id="btn_Save">Save</button>
-			<!--
+				id="btn_Save">Save</button><!--
 		   -->
 			<button type="button" class="btn_normal" name="btn_DownExcel"
 				id="btn_DownExcel">Down Excel</button>
