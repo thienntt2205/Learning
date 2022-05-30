@@ -1,13 +1,13 @@
 /*=========================================================
 *Copyright(c) 2022 CyberLogitec
 *@FileName : ErrMsgMgmtDBDAOErrMsgVORSQL.java
-*@FileTitle : Error Message Management
+*@FileTitle : 
 *Open Issues :
 *Change history :
-*@LastModifyDate : 2022.05.13
+*@LastModifyDate : 2022.05.30
 *@LastModifier : 
 *@LastVersion : 1.0
-* 2022.05.13 
+* 2022.05.30 
 * 1.0 Creation
 =========================================================*/
 package com.clt.apps.opus.esm.clv.thientraining.errmsgmgmt.integration;
@@ -74,7 +74,7 @@ public class ErrMsgMgmtDBDAOErrMsgVORSQL implements ISQLTemplate{
 	 * Query 생성
 	 */
 	public void setQuery(){
-		query.append("SELECT " ).append("\n"); 
+		query.append("SELECT" ).append("\n"); 
 		query.append("	EDW_UPD_DT" ).append("\n"); 
 		query.append(",	UPD_DT" ).append("\n"); 
 		query.append(",	UPD_USR_ID" ).append("\n"); 

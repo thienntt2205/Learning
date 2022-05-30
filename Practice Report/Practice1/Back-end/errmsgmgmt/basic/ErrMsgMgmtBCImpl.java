@@ -33,90 +33,89 @@ import com.clt.apps.opus.esm.clv.thientraining.errmsgmgmt.vo.ErrMsgVO;
  * Thien's cmt BCimpl file for integrate with DBDDAO in this file is
  */
 public class ErrMsgMgmtBCImpl extends BasicCommandSupport implements
-		ErrMsgMgmtBC {
+	ErrMsgMgmtBC {
 
-	// Database Access Object
-	private transient ErrMsgMgmtDBDAO dbDao = null;
+    // Database Access Object
+    private transient ErrMsgMgmtDBDAO dbDao = null;
 
-	/**
-	 * ErrMsgMgmtBCImpl 객체 생성<br>
-	 * ErrMsgMgmtDBDAO를 생성한다.<br>
-	 */
-	// constructor
-	public ErrMsgMgmtBCImpl() {
-		dbDao = new ErrMsgMgmtDBDAO();
+    /**
+     * ErrMsgMgmtBCImpl 객체 생성<br>
+     * ErrMsgMgmtDBDAO를 생성한다.<br>
+     */
+    // constructor
+    public ErrMsgMgmtBCImpl() {
+	dbDao = new ErrMsgMgmtDBDAO();
+    }
+
+    /**
+     * [Act] for [Business Target].<br>
+     * 
+     * @param ErrMsgVO
+     *            errMsgVO
+     * @return List<ErrMsgVO>
+     * @exception EventException
+     */
+    public List<ErrMsgVO> searchErrMsg(ErrMsgVO errMsgVO) throws EventException {
+	try {
+	    return dbDao.searchErrMsg(errMsgVO);
+	} catch (DAOException ex) {
+	    throw new EventException(new ErrorHandler(ex).getMessage(), ex);
+	} catch (Exception ex) {
+	    throw new EventException(new ErrorHandler(ex).getMessage(), ex);
 	}
 
-	/**
-	 * [Act] for [Business Target].<br>
-	 * 
-	 * @param ErrMsgVO
-	 *            errMsgVO
-	 * @return List<ErrMsgVO>
-	 * @exception EventException
-	 */
-	public List<ErrMsgVO> searchErrMsg(ErrMsgVO errMsgVO) throws EventException {
-		try {
-			return dbDao.searchErrMsg(errMsgVO);
-		} catch (DAOException ex) {
-			throw new EventException(new ErrorHandler(ex).getMessage(), ex);
-		} catch (Exception ex) {
-			throw new EventException(new ErrorHandler(ex).getMessage(), ex);
+    }
+
+    /**
+     * [Act] for [Business Target].<br>
+     * 
+     * @param ErrMsgVO
+     *            [] errMsgVO
+     * @param account
+     *            SignOnUserAccount
+     * @exception EventException
+     */
+    public void manageErrMsg(ErrMsgVO[] errMsgVO, SignOnUserAccount account)
+	    throws EventException {
+	try {
+	    List<ErrMsgVO> insertVoList = new ArrayList<ErrMsgVO>();
+	    List<ErrMsgVO> updateVoList = new ArrayList<ErrMsgVO>();
+	    List<ErrMsgVO> deleteVoList = new ArrayList<ErrMsgVO>();
+	    List<ErrMsgVO> list = null;
+	    for (int i = 0; i < errMsgVO.length; i++) {
+		// Find and add new errMsgVO to insertVoList
+		if (errMsgVO[i].getIbflag().equals("I")) {
+
+		    if (dbDao.checkDuplicate(errMsgVO[i]) >= 1) {
+			throw new DAOException(new ErrorHandler("ERR00001",
+				new String[] {}).getMessage());
+		    } else {
+			insertVoList.add(errMsgVO[i]);
+		    }
+		} else if (errMsgVO[i].getIbflag().equals("U")) {
+		    errMsgVO[i].setUpdUsrId(account.getUsr_id());
+		    updateVoList.add(errMsgVO[i]);
+		} else if (errMsgVO[i].getIbflag().equals("D")) {
+		    deleteVoList.add(errMsgVO[i]);
 		}
+	    }
 
+	    if (insertVoList.size() > 0) {
+		dbDao.addmanageErrMsgS(insertVoList);
+	    }
+
+	    if (updateVoList.size() > 0) {
+		dbDao.modifymanageErrMsgS(updateVoList);
+	    }
+
+	    if (deleteVoList.size() > 0) {
+		dbDao.removemanageErrMsgS(deleteVoList);
+	    }
+	} catch (DAOException ex) {
+	    throw new EventException(new ErrorHandler(ex).getMessage(), ex);
+	} catch (Exception ex) {
+	    throw new EventException(new ErrorHandler(ex).getMessage(), ex);
 	}
-
-	/**
-	 * [Act] for [Business Target].<br>
-	 * 
-	 * @param ErrMsgVO
-	 *            [] errMsgVO
-	 * @param account
-	 *            SignOnUserAccount
-	 * @exception EventException
-	 */
-	public void manageErrMsg(ErrMsgVO[] errMsgVO, SignOnUserAccount account)
-			throws EventException {
-		try {
-			List<ErrMsgVO> insertVoList = new ArrayList<ErrMsgVO>();
-			List<ErrMsgVO> updateVoList = new ArrayList<ErrMsgVO>();
-			List<ErrMsgVO> deleteVoList = new ArrayList<ErrMsgVO>();
-			List<ErrMsgVO> list = null;
-			for (int i = 0; i < errMsgVO.length; i++) {
-				if (errMsgVO[i].getIbflag().equals("I")) {
-					list = searchErrMsg(errMsgVO[i]);
-					errMsgVO[i].setCreUsrId(account.getUsr_id());
-					//Update user ID when insert vi luc insert can thong tin cua userID lan nua
-					errMsgVO[i].setUpdUsrId(account.getUsr_id());
-					if (list != null && list.size() > 0) {//check if noi dung cua list neu da ton tai thi bao dup
-						throw new EventException(new ErrorHandler("ERR00001").getMessage());
-					} else {
-						insertVoList.add(errMsgVO[i]);
-					}
-				} else if (errMsgVO[i].getIbflag().equals("U")) {
-					errMsgVO[i].setUpdUsrId(account.getUsr_id());
-					updateVoList.add(errMsgVO[i]);
-				} else if (errMsgVO[i].getIbflag().equals("D")) {
-					deleteVoList.add(errMsgVO[i]);
-				}
-			}
-
-			if (insertVoList.size() > 0) {
-				dbDao.addmanageErrMsgS(insertVoList);
-			}
-
-			if (updateVoList.size() > 0) {
-				dbDao.modifymanageErrMsgS(updateVoList);
-			}
-
-			if (deleteVoList.size() > 0) {
-				dbDao.removemanageErrMsgS(deleteVoList);
-			}
-		} catch (DAOException ex) {
-			throw new EventException(new ErrorHandler(ex).getMessage(), ex);
-		} catch (Exception ex) {
-			throw new EventException(new ErrorHandler(ex).getMessage(), ex);
-		}
-	}
+    }
 
 }

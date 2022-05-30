@@ -4,10 +4,10 @@
 *@FileTitle : ErrMsgVO
 *Open Issues :
 *Change history :
-*@LastModifyDate : 2022.05.13
+*@LastModifyDate : 2022.05.30
 *@LastModifier : 
 *@LastVersion : 1.0
-* 2022.05.13  
+* 2022.05.30  
 * 1.0 Creation
 =========================================================*/
 
