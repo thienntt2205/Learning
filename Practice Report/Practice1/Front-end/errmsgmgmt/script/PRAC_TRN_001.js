@@ -1,30 +1,30 @@
-/*=========================================================
+/*================================================== ==========
  *Copyright(c) 2022 CyberLogitec
  *@FileName : PRAC_TRN_001.js
  *@FileTitle : Error Message Management
- *Open Issues :
- *Change history :
- *@LastModifyDate : 2022.05.13
+ *Open Issues:
+ *Change history:
+ *@LastModifyDate: 2022.05.13
  *@LastModifier :
  *@LastVersion : 1.0
  * 2022.05.13
  * 1.0 Creation
-=========================================================*/
-/****************************************************************************************
- 이벤트 구분 코드: [초기화]INIT=0; [입력]ADD=1; [조회]SEARCH=2; [리스트조회]SEARCHLIST=3;
- [수정]MODIFY=4; [삭제]REMOVE=5; [리스트삭제]REMOVELIST=6 [다중처리]MULTI=7
- 기타 여분의 문자상수  COMMAND01=11; ~ COMMAND20=30;
- ***************************************************************************************/
+==================================================== ========*/
+/**************************************************** *****************************************
+ Event identification code: [Initialization]INIT=0; [input]ADD=1; [Query]SEARCH=2; [List inquiry]SEARCHLIST=3;
+ [Edit] MODIFY=4; [Delete]REMOVE=5; [Remove list]REMOVELIST=6 [Multiprocessing]MULTI=7
+ Other extra character constants COMMAND01=11; ~COMMAND20=30;
+ ************************************************** *****************************************/
 
-/*------------------다음 코드는 JSDoc을 잘 만들기 위해서 추가된 코드임 ------------------*/
+/*------------------The following code is added to make JSDoc well ----- */
 /**
- * @fileoverview 업무에서 공통으로 사용하는 자바스크립트파일로 달력 관련 함수가 정의되어 있다.
- * @author 한진해운
+ * @fileoverview This is a JavaScript file commonly used in work, and calendar-related functions are defined.
+ * @author Hanjin Shipping
  */
 
 /**
  * @extends
- * @class PRAC_TRN_001 : PRAC_TRN_001 생성을 위한 화면에서 사용하는 업무 스크립트를 정의한다.
+ * @class PRAC_TRN_001 : Defines the work script used in the screen for PRAC_TRN_001 creation.
  */
 var sheetObjects = new Array();
 var sheetCnt = 0;

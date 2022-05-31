@@ -88,7 +88,7 @@ public class ErrMsgMgmtBCImpl extends BasicCommandSupport implements
 
 		    if (dbDao.checkDuplicate(errMsgVO[i]) >= 1) {
 			throw new DAOException(new ErrorHandler("ERR00001",
-				new String[] {}).getMessage());
+				new String[] {errMsgVO[i].getErrMsgCd()}).getMessage());
 		    } else {
 			insertVoList.add(errMsgVO[i]);
 		    }
