@@ -31,185 +31,117 @@ var sheetCnt = 0;
 document.onclick = processButtonClick;
 
 function processButtonClick() {
-	/** *** setting sheet object **** */
-	var sheetObject1 = sheetObjects[0];
-	/** **************************************************** */
-	var formObj = document.form;
-	try {
-		var srcName = ComGetEvent("name");
-		if (srcName == null) {
-			return;
-		}
-		switch (srcName) {
-			case "btn_Retrieve":
-				doActionIBSheet(sheetObject1, formObj, IBSEARCH);
-				break;
-			case "btn_Save":
-				doActionIBSheet(sheetObject1, formObj, IBSAVE);
-				break;
-			case "btn_DownExcel":
-				doActionIBSheet(sheetObject1, formObj, IBDOWNEXCEL);
-				break;
-			case "btn_Add":
-				doActionIBSheet(sheetObject1, formObj, IBINSERT);
-				break;
-			default:
-				break;
-		}
-	} catch (e) {
-		if (e == "[object Error]") {
-			ComShowCodeMessage('JOO00001');
-		} else {
-			ComShowMessage(e.message);
-		}
-	}
+  /** *** setting sheet object **** */
+  var sheetObject1 = sheetObjects[0];
+  /** **************************************************** */
+  var formObj = document.form;
+  try {
+    var srcName = ComGetEvent("name");
+    if (srcName == null) {
+      return;
+    }
+    switch (srcName) {
+      case "btn_Retrieve":
+        doActionIBSheet(sheetObject1, formObj, IBSEARCH);
+        break;
+      case "btn_Save":
+        doActionIBSheet(sheetObject1, formObj, IBSAVE);
+        break;
+      case "btn_DownExcel":
+        doActionIBSheet(sheetObject1, formObj, IBDOWNEXCEL);
+        break;
+      case "btn_Add":
+        doActionIBSheet(sheetObject1, formObj, IBINSERT);
+        break;
+      default:
+        break;
+    }
+  } catch (e) {
+    if (e == "[object Error]") {
+      ComShowCodeMessage('JOO00001');
+    } else {
+      ComShowMessage(e.message);
+    }
+  }
 }
 
 function loadPage() {
-	// generate Grid Layout
-	for (i = 0; i < sheetObjects.length; i++) {
-		ComConfigSheet(sheetObjects[i]);
-		initSheet(sheetObjects[i], i + 1);
-		ComEndConfigSheet(sheetObjects[i]);
-	}
+  // generate Grid Layout
+  for (i = 0; i < sheetObjects.length; i++) {
+    ComConfigSheet(sheetObjects[i]);
+    initSheet(sheetObjects[i], i + 1);
+    ComEndConfigSheet(sheetObjects[i]);
+  }
 
-	// auto search data after loading finish.
-	doActionIBSheet(sheetObjects[0], document.form, IBSEARCH);
+  // auto search data after loading finish.
+  doActionIBSheet(sheetObjects[0], document.form, IBSEARCH);
 }
 
-function initSheet(sheetObj, sheetNo) {
-	var cnt = 0;
-	switch (sheetNo) {
-		case 1: // sheet1 init
-			with (sheetObj) {
-
-				var HeadTitle = "STS|Del|Msg Cd|Msg Type|Msg Level|Message|Description";
-				var headCount = ComCountHeadTitle(HeadTitle);
-				// (headCount, 0, 0, true);
-
-				SetConfig({
-					SearchMode: 2,
-					MergeSheet: 5,
-					Page: 20,
-					DataRowMerge: 0
-				});
-
-				var info = {
-					Sort: 1,
-					ColMove: 1,
-					HeaderCheck: 0,
-					ColResize: 1
-				};
-				var headers = [{
-					Text: HeadTitle,
-					Align: "Center"
-				}];
-				InitHeaders(headers, info);
-
-				var cols = [{
-					Type: "Status",
-					Hidden: 1,
-					Width: 50,
-					Align: "Center",
-					ColMerge: 0,
-					SaveName: "ibflag"
-				}, {
-					Type: "DelCheck",
-					Hidden: 0,
-					Width: 50,
-					Align: "Center",
-					ColMerge: 0,
-					SaveName: "del_chk"
-				}, {
-					Type: "Text",
-					Hidden: 0,
-					Width: 100,
-					Align: "Center",
-					ColMerge: 0,
-					SaveName: "err_msg_cd",
-					KeyField: 1,
-					Format: "",
-					UpdateEdit: 0,
-					InsertEdit: 1,
-					EditLen: 8
-				}, {
-					Type: "Combo",
-					Hidden: 0,
-					Width: 100,
-					Align: "Center",
-					ColMerge: 0,
-					SaveName: "err_tp_cd",
-					KeyField: 1,
-					Format: "",
-					UpdateEdit: 1,
-					InsertEdit: 1,
-					EditLen: 5,
-					ComboText: "Server|UI|Both",
-					ComboCode: "S|U|B"
-				}, {
-					Type: "Combo",
-					Hidden: 0,
-					Width: 100,
-					Align: "Center",
-					ColMerge: 0,
-					SaveName: "err_lvl_cd",
-					KeyField: 1,
-					Format: "",
-					UpdateEdit: 1,
-					InsertEdit: 1,
-					EditLen: 6,
-					ComboText: "ERR|WARNING|INFO",
-					ComboCode: "E|W|I"
-				}, {
-					Type: "Text",
-					Hidden: 0,
-					Width: 600,
-					Align: "Left",
-					ColMerge: 0,
-					SaveName: "err_msg",
-					KeyField: 1,
-					Format: "",
-					UpdateEdit: 1,
-					InsertEdit: 1
-					// EditLen :
-				}, {
-					Type: "Text",
-					Hidden: 0,
-					Width: 100,
-					Align: "Left",
-					ColMerge: 0,
-					SaveName: "err_desc",
-					KeyField: 1,
-					Format: "",
-					UpdateEdit: 1,
-					InsertEdit: 1
-					// EditLen : 6
-				}];
-
-				InitColumns(cols);
-				SetEditable(1);
-				// SetColProperty("jo_crr_cd", { AcceptKeys : "E|N",
-				// InputCaseSensitive : 1 });
-				// SetColProperty("vndr_seq", { AcceptKeys : "N"});
-				// SetColProperty("cust_cnt_cd", { AcceptKeys : "E|N",
-				// InputCaseSensitive : 1});
-				// SetColProperty("cust_seq", { AcceptKeys : "N"});
-				// SetColProperty("trd_cd", { AcceptKeys : "E|N", InputCaseSensitive
-				// : 1 });
-				SetWaitImageVisible(0);
-				resizeSheet();
-			}
-			break;
-	}
-
+function initSheet(sheetObj,sheetNo) {
+	var cnt=0;
+	var sheetID=sheetObj.id;
+    switch(sheetNo) {
+    	case 1:
+    		with(sheetObj){
+    			// define a string to store head titles
+            	var HeadTitle="STS|Del|Msg Cd|Msg Type|Msg level|Message|Description" ;
+            	// SetConfig: configure how to fetch initialized sheet, location of frozen rows or columns and other basic configurations
+            		// SearchMode: 2 (is where you can configure search mode)
+            			// LazyLoad mode
+            			// Search all data and display search result data on the screen by page as set in Page property value according to the scroll location
+            		// MergeSheet: 5 (is where you can configure merge styles)
+            			// Value: msHeaderOnly
+            			// Allow merge in the header rows only
+            		// FrozenCol: 0 (is where you can select the frozen column count in the left)
+            		// DataRowMerge: 1 (Whether to allow horizontal merge of the entire row.)
+                SetConfig( { SearchMode:2, MergeSheet:5, Page:20, FrozenCol:0, DataRowMerge:1 } );
+                //Define header functions such as sorting and column movement permissions in json format
+                	// Sort: 1 (allow sorting by clicking on the header)
+                	// ColMove: 1 (allow column movement in header)
+                	// HeaderCheck : 0 (the CheckAll in the header is not checked)
+                	// ColResize: 1 (allow resizing of column width)
+                var info    = { Sort:1, ColMove:1, HeaderCheck:0, ColResize:1 };
+                // Define header title and alignment in json format.
+                var headers = [ { Text:HeadTitle, Align:"Center"} ];
+                // Define the header title and function using this method.
+                InitHeaders(headers, info);
+                // Type			 (String) : Column data type
+                // Hidden 		 (Boolean): Whether a column is hidden
+                // Width		 (Number) : Column width
+                // Align 		 (String) : Data alignment
+                // ColMerge 	 (Boolean): Whether to allow column merging
+                // SaveName		 (String) : A parameter name used to save or search data
+                // KeyField 	 (Boolean): Required fields
+                // UpdateEdit    (Boolean): Whether to allow data editing when transaction is in "Search" state
+                // InsertEdit 	 (Boolean): Whether to allow data editing when transaction is in "Insert" state
+                // EditLen 	     (Number) : Editable data length
+                // ComboText 	 (String) : Combo list text string group
+                // ComboCode 	 (String) : Combo list code group
+                // MultiLineText (Boolean): Whether to use multilines
+                var cols = [ 
+                    {Type:"Status", Hidden:1, Width:30, Align:"Center", ColMerge:0, SaveName:"ibflag" },
+                    {Type:"DelCheck", Hidden:0, Width:45, Align:"Center", ColMerge:0, SaveName:"DEL", KeyField:0, UpdateEdit:1, InsertEdit:1 },
+	                {Type:"Text", Hidden:0, Width:80, Align:"Center", ColMerge:1, SaveName:"err_msg_cd", KeyField:1, UpdateEdit:0, InsertEdit:1, EditLen: 8 },
+	                {Type:"Combo", Hidden:0, Width:80, Align:"Center", ColMerge:1, SaveName:"err_tp_cd", KeyField:1, UpdateEdit:1, InsertEdit:1, ComboText:"Server|UI|Both", ComboCode:"S|U|B" },
+	                {Type:"Combo", Hidden:0, Width:80, Align:"Center", ColMerge:1, SaveName:"err_lvl_cd", KeyField:1, UpdateEdit:1, InsertEdit:1, ComboText:"ERR|WARNING|INFO", ComboCode:"E|W|I" },
+	                {Type:"Text", Hidden:0, Width:400, Align:"Left", ColMerge:0, SaveName:"err_msg", KeyField:1, UpdateEdit:1, InsertEdit:1, MultiLineText:1 },
+	                {Type:"Text", Hidden:0, Width:250, Align:"Left", ColMerge:0, SaveName:"err_desc", KeyField:0, UpdateEdit:1, InsertEdit:1 } 
+	            ];
+                // Configure data type, format and functionality of each column.
+                InitColumns(cols);
+                //Set not to display waiting image for processing
+                SetWaitImageVisible(0);
+                resizeSheet();
+            }
+            break;
+    }
 }
-
 function resizeSheet() {
-	ComResizeSheet(sheetObjects[0]);
+  ComResizeSheet(sheetObjects[0]);
 }
 
 function setSheetObject(sheet_obj) {
-	sheetObjects[sheetCnt++] = sheet_obj;
+  sheetObjects[sheetCnt++] = sheet_obj;
 }
 
 // function setComboObject(combo_obj) {
@@ -217,87 +149,82 @@ function setSheetObject(sheet_obj) {
 // }
 
 function doActionIBSheet(sheetObj, formObj, sAction) {
-	sheetObj.ShowDebugMsg(false);
-	// if (!validateForm(sheetObj, formObj, sAction)) {
-	// return false;
-	// }
-	switch (sAction) {
-		case IBSEARCH: // retrieve
+  sheetObj.ShowDebugMsg(false);
+  // if (!validateForm(sheetObj, formObj, sAction)) {
+  // return false;
+  // }
+  switch (sAction) {
+    case IBSEARCH: // retrieve
 
-			// set command for search funtion
-			formObj.f_cmd.value = SEARCH;
-			// ComOpenWait:configure whether a loading image will appears and lock the screen
-			// true: lock the screen.
-			// false: return normal.
-			ComOpenWait(true);
-			//DoSearch = GetSearch + LoadSearch
-			sheetObj.DoSearch("PRAC_TRN_001GS.do", FormQueryString(formObj));
-			// var sParam=FormQueryString(formObj);
-			// var sXml=sheetObj.GetSearchData("DOU_TRN_001GS.do", sParam);
-			// sheetObj.LoadSearchData(sXml,{Sync:1});
-			break;
-		case IBSAVE: // Save
-			formObj.f_cmd.value = MULTI;
-			// Call input valid function to check before save "0" is set default Doaction not to check again
-			if (validateForm(sheetObj, formObj, 0)) {
-				sheetObj.DoSave("PRAC_TRN_001GS.do", FormQueryString(formObj));
-			}
-			break;
-		case IBINSERT: // Row Add button event
-			sheetObj.DataInsert();
-			break;
-		// case IBDELETE: // Row Delete button event
-		// for (var i = sheetObj.LastRow(); i >= sheetObj.HeaderRows(); i--) {
-		// if (sheetObj.GetCellValue(i, "del_chk") == 1) {
-		// sheetObj.SetRowHidden(i, 1);
-		// sheetObj.SetRowStatus(i, "D");
-		// }
-		// }
-		// break;
-		case IBDOWNEXCEL: // downexcel
-			sheetObj.Down2Excel({
-				Filename: 'getexcel',
-				SheetName: 'main',
-				DownCols: '2|3|4|5|6'
-			});
-			break;
-		// case IBADDROW: // addrow to current line
-		// sheetObj.DataInsert();
-		// break;
-	}
+      // set command for search function
+      formObj.f_cmd.value = SEARCH;
+      // ComOpenWait:configure whether a loading image will appears and lock
+      // the screen
+      // true: lock the screen.
+      // false: return normal.
+      ComOpenWait(true);
+      // DoSearch = GetSearch + LoadSearch
+      sheetObj.DoSearch("PRAC_TRN_001GS.do", FormQueryString(formObj));
+      // var sParam=FormQueryString(formObj);
+      // var sXml=sheetObj.GetSearchData("DOU_TRN_001GS.do", sParam);
+      // sheetObj.LoadSearchData(sXml,{Sync:1});
+      break;
+    case IBSAVE: // Save
+      formObj.f_cmd.value = MULTI;
+      // Call input valid function to check before save "0" is set default
+      // Doaction not to check again
+      if (validateForm(sheetObj, formObj, 0)) {
+        sheetObj.DoSave("PRAC_TRN_001GS.do", FormQueryString(formObj));
+        // ComShowCodeMessage("COM130102","Msg cd");
+      }
+      break;
+    case IBINSERT: // Row Add button event
+      sheetObj.DataInsert();
+      break;
+    // case IBDELETE: // Row Delete button event
+    // for (var i = sheetObj.LastRow(); i >= sheetObj.HeaderRows(); i--) {
+    // if (sheetObj.GetCellValue(i, "del_chk") == 1) {
+    // sheetObj.SetRowHidden(i, 1);
+    // sheetObj.SetRowStatus(i, "D");
+    // }
+    // }
+    // break;
+    case IBDOWNEXCEL: // downexcel
+      sheetObj.Down2Excel({
+        Filename: 'getexcel',
+        SheetName: 'main',
+        DownCols: '2|3|4|5|6'
+      });
+      break;
+    // case IBADDROW: // addrow to current line
+    // sheetObj.DataInsert();
+    // break;
+  }
 }
 
 function sheet1_OnSearchEnd(sheetObj, Code, Msg, StCode, StMsg) {
-	ComOpenWait(false);
+  ComOpenWait(false);
 }
+//function sheet1_OnSaveEnd(sheetObj, Code, Msg, StCode, StMsg) {
+//    console.log("12345");
+//    ComShowCodeMessage("COM130102", "Action");
+//}
 
 function validateForm(sheetObj, formObj, sAction) {
-	var regexString = "^[A-Z]{3}[0-9]{5}$";
-	var regex = new RegExp(regexString);
-	for (var i = sheetObj.LastRow(); i >= sheetObj.HeaderRows(); i--) {
-		if (sheetObj.GetCellValue(i, "ibflag") == 'I'
-			&& !regex.test(sheetObj.GetCellValue(i, "err_msg_cd"))) {
-			ComShowCodeMessage("COM132201", "Msg cd");
-			return false;
-		}
-	}
-	return true;
+  var regexString = "^[A-Z]{3}[0-9]{5}$";
+  var regex = new RegExp(regexString);
+  for (var i = sheetObj.LastRow(); i >= sheetObj.HeaderRows(); i--) {
+    if (sheetObj.GetCellValue(i, "ibflag") == 'I'
+      && !regex.test(sheetObj.GetCellValue(i, "err_msg_cd"))) {
+      ComShowCodeMessage("COM132201", "Msg cd");
+      return false;
+    }
+  }
+  return true;
 
-	// sheetObj.ShowDebugMsg(false);
+  // sheetObj.ShowDebugMsg(false);
 
 }
-
-function PRAC_TRN_001() {
-	this.processButtonClick = tprocessButtonClick;
-	this.setSheetObject = setSheetObject;
-	this.loadPage = loadPage;
-	this.initSheet = initSheet;
-	this.initControl = initControl;
-	this.doActionIBSheet = doActionIBSheet;
-	this.setTabObject = setTabObject;
-	this.validateForm = validateForm;
-}
-
 /* 개발자 작업 */
 
 /* 개발자 작업 끝 */

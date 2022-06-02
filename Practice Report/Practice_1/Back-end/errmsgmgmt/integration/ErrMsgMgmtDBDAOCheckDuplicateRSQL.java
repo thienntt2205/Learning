@@ -4,13 +4,13 @@
 *@FileTitle : 
 *Open Issues :
 *Change history :
-*@LastModifyDate : 2022.05.30
+*@LastModifyDate : 2022.05.31
 *@LastModifier : 
 *@LastVersion : 1.0
-* 2022.05.30 
+* 2022.05.31 
 * 1.0 Creation
 =========================================================*/
-package com.clt.apps.opus.esm.clv.thientraining.errmsgmgmt.integration ;
+package com.clt.apps.opus.esm.clv.thientraining.errmsgmgmt.integration;
 
 import java.util.HashMap;
 import org.apache.log4j.Logger;
@@ -50,7 +50,7 @@ public class ErrMsgMgmtDBDAOCheckDuplicateRSQL implements ISQLTemplate{
 		params.put("err_msg_cd",new String[]{arrTmp[0],arrTmp[1]});
 
 		query.append("/*").append("\n"); 
-		query.append("Path : com.clt.apps.opus.esm.clv.thientraining.errmsgmgmt.integration ").append("\n"); 
+		query.append("Path : com.clt.apps.opus.esm.clv.thientraining.errmsgmgmt.integration").append("\n"); 
 		query.append("FileName : ErrMsgMgmtDBDAOCheckDuplicateRSQL").append("\n"); 
 		query.append("*/").append("\n"); 
 	}

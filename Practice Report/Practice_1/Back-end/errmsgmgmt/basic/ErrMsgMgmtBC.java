@@ -29,21 +29,25 @@ import com.clt.apps.opus.esm.clv.thientraining.errmsgmgmt.vo.ErrMsgVO;
 
 public interface ErrMsgMgmtBC {
 
-  /**
-   * [Act] for [Business Target].<br>
-   * 
-   * @param ErrMsgVO errMsgVO
-   * @return List<ErrMsgVO>
-   * @exception EventException
-   */
-  public List<ErrMsgVO> searchErrMsg(ErrMsgVO errMsgVO) throws EventException;
+    /**
+     * [Act] for [Business Target].<br>
+     * 
+     * @param ErrMsgVO
+     *            errMsgVO
+     * @return List<ErrMsgVO>
+     * @exception EventException
+     */
+    public List<ErrMsgVO> searchErrMsg(ErrMsgVO errMsgVO) throws EventException;
 
-  /**
-   * [Act] for [Business Target].<br>
-   * 
-   * @param ErrMsgVO [] errMsgVO
-   * @param account SignOnUserAccount
-   * @exception EventException
-   */
-  public void manageErrMsg(ErrMsgVO[] errMsgVO, SignOnUserAccount account) throws EventException;
+    /**
+     * [Act] for [Business Target].<br>
+     * 
+     * @param ErrMsgVO
+     *            [] errMsgVO
+     * @param account
+     *            SignOnUserAccount
+     * @exception EventException
+     */
+    public void manageErrMsg(ErrMsgVO[] errMsgVO, SignOnUserAccount account)
+	    throws EventException;
 }

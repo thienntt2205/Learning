@@ -24,11 +24,13 @@ import com.clt.apps.opus.esm.clv.thientraining.errmsgmgmt.vo.ErrMsgVO;
 
 /**
  * HTTP Parser<br>
- * - com.clt.apps.opus.esm.clv.thientraining 화면을 통해 서버로 전송되는 HTML DOM 객체의 Value를
- * 자바 변수로 Parsing<br>
- * - Parsing 한 정보를 Event로 변환, request에 담아 ThienTrainingSC로 실행요청<br>
- * - ThienTrainingSC에서 View(JSP)로 실행결과를 전송하는 EventResponse를 request에 셋팅<br>
- * 
+ * - Value of HTML DOM object sent to server through
+ * com.clt.apps.opus.esm.clv.thientraining screen Parsing to Java Variables<br>
+ * - Convert the parsing information into an Event, put it in the request and
+ * request execution with ThienTrainingSC<br>
+ * - Set EventResponse to request to send execution result from ThienTrainingSC
+ * to View (JSP)<br>
+ *
  * @author Thien
  * @see ThienTrainingEvent 참조
  * @since J2EE 1.6
@@ -36,72 +38,75 @@ import com.clt.apps.opus.esm.clv.thientraining.errmsgmgmt.vo.ErrMsgVO;
 
 public class PRAC_TRN_001HTMLAction extends HTMLActionSupport {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * PRAC_TRN_001HTMLAction 객체를 생성
-	 */
-	public PRAC_TRN_001HTMLAction() {
+    /**
+     * Create an object PRAC_TRN_001HTMLAction
+     */
+    public PRAC_TRN_001HTMLAction() {
+    }
+
+    /**
+     * Parsing the HTML DOM object's Value as a Java variable<br>
+     * Parsing the information of HttpRequst as ThienTrainingEvent and setting
+     * it in the request<br>
+     * 
+     * @param request
+     *            HttpServletRequest HttpRequest
+     * @return Event An object that implements the Event interface.
+     * @exception HTMLActionException
+     */
+    public Event perform(HttpServletRequest request) throws HTMLActionException {
+
+	FormCommand command = FormCommand.fromRequest(request);
+	PracTrn001Event event = new PracTrn001Event();
+
+	if (command.isCommand(FormCommand.MULTI)) {
+	    event.setErrMsgVOS((ErrMsgVO[]) getVOs(request, ErrMsgVO.class, ""));
 	}
-
-	/**
-	 * HTML DOM 객체의 Value를 자바 변수로 Parsing<br>
-	 * HttpRequst의 정보를 ThienTrainingEvent로 파싱하여 request에 셋팅<br>
-	 * 
-	 * @param request
-	 *            HttpServletRequest HttpRequest
-	 * @return Event Event interface를 구현한 객체
-	 * @exception HTMLActionException
-	 */
-	public Event perform(HttpServletRequest request) throws HTMLActionException {
-
-		FormCommand command = FormCommand.fromRequest(request);
-		PracTrn001Event event = new PracTrn001Event();
-
-		if (command.isCommand(FormCommand.MULTI)) {
-			event.setErrMsgVOS((ErrMsgVO[]) getVOs(request, ErrMsgVO.class, ""));
-		}
-		// if we use search function, this logic may not work functionaly
-		// anymore,so that why we need to cmt this code
-		else if (command.isCommand(FormCommand.SEARCH)) {
-			// event.setErrMsgVO((ErrMsgVO) getVO(request, ErrMsgVO.class));
-			// create a temp ErrMsgVo instance to get data from jsp
-			ErrMsgVO tempVarMsginfo = new ErrMsgVO();
-			// set data from ErrMsgcd "s_err_msg_cd" to temp
-			tempVarMsginfo.setErrMsgCd(JSPUtil.getParameter(request,
-					"s_err_msg_cd", ""));
-			// set data from ErrMsgdesc "s_err_msg"
-			tempVarMsginfo.setErrMsg(JSPUtil.getParameter(request, "s_err_msg",
-					""));
-			// tempVarMsginfo able to get multi parametters
-			event.setErrMsgVO(tempVarMsginfo);
-		}
-		return event;
+	// if we use search function, this logic may not work functionally
+	// anymore,so that why we need to comment this code
+	else if (command.isCommand(FormCommand.SEARCH)) {
+	    // event.setErrMsgVO((ErrMsgVO) getVO(request, ErrMsgVO.class));
+	    // create a temp ErrMsgVo instance to get data from jsp
+	    ErrMsgVO tempVarMsginfo = new ErrMsgVO();
+	    // set data from ErrMsgcd "s_err_msg_cd" to temp
+	    tempVarMsginfo.setErrMsgCd(JSPUtil.getParameter(request,
+		    "s_err_msg_cd", ""));
+	    // set data from ErrMsgdesc "s_err_msg"
+	    tempVarMsginfo.setErrMsg(JSPUtil.getParameter(request, "s_err_msg",
+		    ""));
+	    // tempVarMsginfo able to get multi parameters
+	    event.setErrMsgVO(tempVarMsginfo);
 	}
+	return event;
+    }
 
-	/**
-	 * HttpRequest의 attribute에 업무시나리오 수행결과 값 저장<br>
-	 * ServiceCommand에서 View(JSP)로 실행결과를 전송하는 ResultSet을 request에 셋팅<br>
-	 * 
-	 * @param request
-	 *            HttpServletRequest HttpRequest
-	 * @param eventResponse
-	 *            EventResponse interface를 구현한 객체
-	 */
-	public void doEnd(HttpServletRequest request, EventResponse eventResponse) {
-		request.setAttribute("EventResponse", eventResponse);
-	}
+    /**
+     * Saving the value of the task scenario execution result in the attribute
+     * of HttpRequest<br>
+     * Setting the ResultSet that transmits the execution result from
+     * ServiceCommand to View (JSP) in the request<br>
+     * 
+     * @param request
+     *            HttpServletRequest HttpRequest
+     * @param eventResponse
+     *            An object that implements the EventResponse interface.
+     */
+    public void doEnd(HttpServletRequest request, EventResponse eventResponse) {
+	request.setAttribute("EventResponse", eventResponse);
+    }
 
-	/**
-	 * HttpRequest의 attribute에 HttpRequest 파싱 수행결과 값 저장<br>
-	 * HttpRequest 파싱 수행결과 값 request에 셋팅<br>
-	 * 
-	 * @param request
-	 *            HttpServletRequest HttpRequest
-	 * @param event
-	 *            Event interface를 구현한 객체
-	 */
-	public void doEnd(HttpServletRequest request, Event event) {
-		request.setAttribute("Event", event);
-	}
+    /**
+     * Save HttpRequest parsing result value in HttpRequest attribute<br>
+     * HttpRequest parsing result value set in request<br>
+     *
+     * @param request
+     *            HttpServletRequest HttpRequest
+     * @param event
+     *            Object that implements the EventResponse interface
+     */
+    public void doEnd(HttpServletRequest request, Event event) {
+	request.setAttribute("Event", event);
+    }
 }
