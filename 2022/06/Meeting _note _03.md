@@ -97,7 +97,7 @@ Hôm nay:
   - Tạo popup cho cột Customer
   - Check duplicate khi save trùng dữ liệu"
 
-9. Nguyen Trung Hieu "Hôm qua:
+9. Nguyen Trung Hieu
 
 - Hôm qua:
   - Final practice 4
@@ -130,12 +130,12 @@ Khó khăn: chưa có
   - Đọc doc SQL
   - Trả lời câu hỏi practice 2
   - Làm practice 3, tạo file
-Hôm nay:
-- Xem lại video business,
-- Tiếp tục đọc doc SQL
-- Làm practice 3
+- Hôm nay:
+  - Xem lại video business,
+  - Tiếp tục đọc doc SQL
+  - Làm practice 3
+  - Note lại warning and send to group/
 - Link daily note: <https://github.com/thienntt2205/Learning/tree/main/2022/05>
-- Note lại warning and send to group/"
 
 13. Trương Đình Ánh
 
@@ -152,15 +152,14 @@ Hôm nay:
   - Xem lại tài liệu bussiness: Shipping overview
   - Code UI cho practice 3
 Hôm nay:
-- Làm tiếp practice 3 (thêm event cho UI và load data lên grid)"
-
+- Làm tiếp practice 3 (thêm event cho UI và load data lên grid)
 14. Đặng Hoàn Thành
 
 - Hôm qua:
   - Em cấu hình xong Practice 2
   - Em làm chức năng search trong Practice 2
 - Hôm nay:
-  - Em tiếp tục làm search và các chức năng khác của Practice 2"
+  - Em tiếp tục làm search và các chức năng khác của Practice 2
 
 ## Meeting question
 
