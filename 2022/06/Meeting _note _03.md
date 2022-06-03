@@ -31,7 +31,7 @@ Hôm nay :
 - Sáng: tiếp tục trả lời câu hỏi sql
   - <https://drive.google.com/drive/u/0/folders/10q1slikIlYtRkZ9hu3xwy66n_91quZ4W>
 - Chiều: nghỉ
-- Khó khăn: chưa có"
+- Khó khăn: chưa có
 
 3. TÔ HỒNG HẢI
 
@@ -42,7 +42,7 @@ Hôm nay :
     - <https://drive.google.com/drive/folders/19Isf27ibnxtGXJ1Ll0d444NdHltWrWWb>
 - Hôm nay:
   - Làm SQL Practice
-  - Xem lại business: EQ Container & Logistics Operation"
+  - Xem lại business: EQ Container & Logistics Operation
 
 4. HỒ THIỆN PHÚC "Hôm qua:
 
@@ -78,7 +78,7 @@ Hôm nay:
 - Hôm nay
   - Check lại practice 4 chiều FE
   - Xem SQL
-    - <https://drive.google.com/drive/u/0/folders/1c73t5WhqqSo-pJCsjlwwJdjbW5SgyQox>"
+    - <https://drive.google.com/drive/u/0/folders/1c73t5WhqqSo-pJCsjlwwJdjbW5SgyQox>
 
 7. Nguyễn Nhật Hào
 
@@ -95,7 +95,7 @@ Hôm nay:
   - Tìm hiểu cách tạo thêm 1 màn hình popup
 - Hôm nay:
   - Tạo popup cho cột Customer
-  - Check duplicate khi save trùng dữ liệu"
+  - Check duplicate khi save trùng dữ liệu
 
 9. Nguyen Trung Hieu
 
@@ -114,7 +114,7 @@ Hôm nay:
   - Sáng + chiều : đổ dữ liệu lên combo box, làm chức năng search, new, row add. row delete
 Khó khăn: chưa có
 - Hôm nay :
-  - sáng+ chiều: tiếp tục làm chức năng save and validate and show popup cho practice 4"
+  - sáng + chiều: tiếp tục làm chức năng save and validate and show popup cho practice 4
 
 11. Nguyen Ly Khanh Huy
 
@@ -122,7 +122,7 @@ Khó khăn: chưa có
   - Practice 4
   - làm popup cho 2 ô customer service
 - Hôm nay :
-  - check dupplicate , ô downexel , ô rowdelete , test lại chức năng practice 4 "
+  - check dupplicate , ô downexel , ô rowdelete , test lại chức năng practice 4
 
 12. Nguyễn Thái Thiện
 
@@ -143,7 +143,7 @@ Khó khăn: chưa có
   - Thiết kế UI của Practice 3
   - Đổ dữ liệu vào sheet
 - Hôm nay:
-  - Thực hiện chức năng Retrive"
+  - Thực hiện chức năng Retrive
 
 14.Phùng Đinh Huy
 
