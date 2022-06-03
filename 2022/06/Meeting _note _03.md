@@ -33,7 +33,7 @@ Hôm nay :
 - Chiều: nghỉ
 - Khó khăn: chưa có
 
-3. TÔ HỒNG HẢI
+3. TÔ Hồng Hải
 
 - Hôm qua :
   - Đọc SQL Guideline - SQL Guideline
@@ -44,7 +44,7 @@ Hôm nay :
   - Làm SQL Practice
   - Xem lại business: EQ Container & Logistics Operation
 
-4. HỒ THIỆN PHÚC "Hôm qua:
+4. HỒ Thiện Phúc
 
 - Hôm qua:
   - Tìm hiểu thêm về SQL
