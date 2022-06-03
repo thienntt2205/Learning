@@ -53,10 +53,10 @@ Hôm nay :
 
 - Xem lại video Fianance Management
   - <https://youtu.be/pRtSsn0lKaE>
-Hôm nay:
-- Tìm hiểu thêm về SQL
-  - <https://docs.google.com/presentation/d/1xWUuB_YKaQfll2aR2Y4lGsiX6y0zJXqzAdq1UvuP4dA/edit#slide=id.p1>
-  - <https://drive.google.com/drive/u/1/folders/1c73t5WhqqSo-pJCsjlwwJdjbW5SgyQox>
+- Hôm nay:
+  - Tìm hiểu thêm về SQL
+    - <https://docs.google.com/presentation/d/1xWUuB_YKaQfll2aR2Y4lGsiX6y0zJXqzAdq1UvuP4dA/edit#slide=id.p1>
+    - <https://drive.google.com/drive/u/1/folders/1c73t5WhqqSo-pJCsjlwwJdjbW5SgyQox>
 - Xem lại video Fianance Management
   - <https://youtu.be/pRtSsn0lKaE>
   - Thuyết trình Fianance  Management :estimate monday.
