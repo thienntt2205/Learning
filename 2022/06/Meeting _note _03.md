@@ -15,7 +15,7 @@
 - Đọc tài liệu về business TRS Management
   - <https://docs.google.com/presentation/d/1xWUuB_YKaQfll2aR2Y4lGsiX6y0zJXqzAdq1UvuP4dA/edit#slide=id.p1>
   - <https://drive.google.com/drive/u/0/folders/1c73t5WhqqSo-pJCsjlwwJdjbW5SgyQox>
-- câu hỏi: Chưa có.                                         "
+- câu hỏi: Chưa có.
 
 2. Trần Quốc Việt
 
