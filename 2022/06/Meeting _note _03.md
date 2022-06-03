@@ -27,9 +27,10 @@
   - Meeting với team chị Tuyền.
   - Trả lời câu hỏi sql
     - <https://drive.google.com/drive/u/0/folders/10q1slikIlYtRkZ9hu3xwy66n_91quZ4W>
-Hôm nay :
-- Sáng: tiếp tục trả lời câu hỏi sql
-  - <https://drive.google.com/drive/u/0/folders/10q1slikIlYtRkZ9hu3xwy66n_91quZ4W>
+- Hôm nay :
+  - Sáng:
+    - tiếp tục trả lời câu hỏi sql
+      - <https://drive.google.com/drive/u/0/folders/10q1slikIlYtRkZ9hu3xwy66n_91quZ4W>
 - Chiều: nghỉ
 - Khó khăn: chưa có
 
