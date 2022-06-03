@@ -154,7 +154,7 @@ Khó khăn: chưa có
 - Hôm nay:
   - Làm tiếp practice 3 (thêm event cho UI và load data lên grid)
 
-14. Đặng Hoàn Thành
+15. Đặng Hoàn Thành
 
 - Hôm qua:
   - Em cấu hình xong Practice 2
