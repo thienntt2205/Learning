@@ -151,8 +151,9 @@ Khó khăn: chưa có
   - Xem lại practice 1& 2
   - Xem lại tài liệu bussiness: Shipping overview
   - Code UI cho practice 3
-Hôm nay:
-- Làm tiếp practice 3 (thêm event cho UI và load data lên grid)
+- Hôm nay:
+  - Làm tiếp practice 3 (thêm event cho UI và load data lên grid)
+
 14. Đặng Hoàn Thành
 
 - Hôm qua:
