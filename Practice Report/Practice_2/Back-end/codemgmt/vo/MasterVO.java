@@ -5,9 +5,9 @@
 *Open Issues :
 *Change history :
 *@LastModifyDate : 2022.04.25
-*@LastModifier : 
+*@LastModifier :
 *@LastVersion : 1.0
-* 2022.04.15  
+* 2022.04.15
 * 1.0 Creation
 =========================================================*/
 
@@ -31,7 +31,7 @@ import com.clt.framework.component.util.JSPUtil;
  * Table Value Ojbect<br>
  * 관련 Event 에서 생성, 서버실행요청시 Data 전달역할을 수행하는 Value Object
  *
- * @author 
+ * @author
  * @since J2EE 1.6
  * @see AbstractValueObject
  */
@@ -39,9 +39,9 @@ import com.clt.framework.component.util.JSPUtil;
 public class MasterVO extends AbstractValueObject {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Collection<MasterVO> models = new ArrayList<MasterVO>();
-	
+
 	/* Column Info */
 	private String updDt = null;
 	/* Column Info */
@@ -76,7 +76,7 @@ public class MasterVO extends AbstractValueObject {
 
 	/*	테이블 컬럼에 대응되는 멤버변수를 저장하는 Hashtable */
 	private HashMap<String, String> hashFields = new LinkedHashMap<String, String>();
-	
+
 	public MasterVO() {}
 
 	public MasterVO(String ibflag, String pagerows, String ownrSubSysCd, String intgCdId, String intgCdNm, String intgCdLen, String intgCdTpCd, String mngTblNm, String intgCdDesc, String intgCdUseFlg, String creUsrId, String creDt, String updUsrId, String updDt) {
@@ -95,7 +95,7 @@ public class MasterVO extends AbstractValueObject {
 		this.intgCdNm = intgCdNm;
 		this.updUsrId = updUsrId;
 	}
-	
+
 	/**
 	 * 테이블 컬럼에 저장할 값을 Hashtable<"column_name", "value"> 로 반환
 	 * @return HashMap
@@ -117,9 +117,9 @@ public class MasterVO extends AbstractValueObject {
 		this.hashColumns.put("upd_usr_id", getUpdUsrId());
 		return this.hashColumns;
 	}
-	
+
 	/**
-	 * 컬럼명에 대응되는 멤버변수명을 저장하여 Hashtable<"column_name", "variable"> 로 반환   
+	 * 컬럼명에 대응되는 멤버변수명을 저장하여 Hashtable<"column_name", "variable"> 로 반환
 	 * @return
 	 */
 	public HashMap<String, String> getFieldNames(){
@@ -139,7 +139,7 @@ public class MasterVO extends AbstractValueObject {
 		this.hashFields.put("upd_usr_id", "updUsrId");
 		return this.hashFields;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @return updDt
@@ -147,7 +147,7 @@ public class MasterVO extends AbstractValueObject {
 	public String getUpdDt() {
 		return this.updDt;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @return intgCdLen
@@ -155,7 +155,7 @@ public class MasterVO extends AbstractValueObject {
 	public String getIntgCdLen() {
 		return this.intgCdLen;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @return intgCdDesc
@@ -163,7 +163,7 @@ public class MasterVO extends AbstractValueObject {
 	public String getIntgCdDesc() {
 		return this.intgCdDesc;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @return ownrSubSysCd
@@ -171,7 +171,7 @@ public class MasterVO extends AbstractValueObject {
 	public String getOwnrSubSysCd() {
 		return this.ownrSubSysCd;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @return intgCdTpCd
@@ -179,7 +179,7 @@ public class MasterVO extends AbstractValueObject {
 	public String getIntgCdTpCd() {
 		return this.intgCdTpCd;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @return creDt
@@ -187,7 +187,7 @@ public class MasterVO extends AbstractValueObject {
 	public String getCreDt() {
 		return this.creDt;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @return mngTblNm
@@ -195,7 +195,7 @@ public class MasterVO extends AbstractValueObject {
 	public String getMngTblNm() {
 		return this.mngTblNm;
 	}
-	
+
 	/**
 	 * Page Number
 	 * @return pagerows
@@ -203,7 +203,7 @@ public class MasterVO extends AbstractValueObject {
 	public String getPagerows() {
 		return this.pagerows;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @return intgCdId
@@ -211,7 +211,7 @@ public class MasterVO extends AbstractValueObject {
 	public String getIntgCdId() {
 		return this.intgCdId;
 	}
-	
+
 	/**
 	 * VO Data Value( C:Creation, U:Update, D:Delete )
 	 * @return ibflag
@@ -219,7 +219,7 @@ public class MasterVO extends AbstractValueObject {
 	public String getIbflag() {
 		return this.ibflag;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @return intgCdUseFlg
@@ -227,7 +227,7 @@ public class MasterVO extends AbstractValueObject {
 	public String getIntgCdUseFlg() {
 		return this.intgCdUseFlg;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @return creUsrId
@@ -235,7 +235,7 @@ public class MasterVO extends AbstractValueObject {
 	public String getCreUsrId() {
 		return this.creUsrId;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @return intgCdNm
@@ -243,7 +243,7 @@ public class MasterVO extends AbstractValueObject {
 	public String getIntgCdNm() {
 		return this.intgCdNm;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @return updUsrId
@@ -251,7 +251,7 @@ public class MasterVO extends AbstractValueObject {
 	public String getUpdUsrId() {
 		return this.updUsrId;
 	}
-	
+
 
 	/**
 	 * Column Info
@@ -260,7 +260,7 @@ public class MasterVO extends AbstractValueObject {
 	public void setUpdDt(String updDt) {
 		this.updDt = updDt;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @param intgCdLen
@@ -268,7 +268,7 @@ public class MasterVO extends AbstractValueObject {
 	public void setIntgCdLen(String intgCdLen) {
 		this.intgCdLen = intgCdLen;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @param intgCdDesc
@@ -276,7 +276,7 @@ public class MasterVO extends AbstractValueObject {
 	public void setIntgCdDesc(String intgCdDesc) {
 		this.intgCdDesc = intgCdDesc;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @param ownrSubSysCd
@@ -284,7 +284,7 @@ public class MasterVO extends AbstractValueObject {
 	public void setOwnrSubSysCd(String ownrSubSysCd) {
 		this.ownrSubSysCd = ownrSubSysCd;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @param intgCdTpCd
@@ -292,7 +292,7 @@ public class MasterVO extends AbstractValueObject {
 	public void setIntgCdTpCd(String intgCdTpCd) {
 		this.intgCdTpCd = intgCdTpCd;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @param creDt
@@ -300,7 +300,7 @@ public class MasterVO extends AbstractValueObject {
 	public void setCreDt(String creDt) {
 		this.creDt = creDt;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @param mngTblNm
@@ -308,7 +308,7 @@ public class MasterVO extends AbstractValueObject {
 	public void setMngTblNm(String mngTblNm) {
 		this.mngTblNm = mngTblNm;
 	}
-	
+
 	/**
 	 * Page Number
 	 * @param pagerows
@@ -316,7 +316,7 @@ public class MasterVO extends AbstractValueObject {
 	public void setPagerows(String pagerows) {
 		this.pagerows = pagerows;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @param intgCdId
@@ -324,7 +324,7 @@ public class MasterVO extends AbstractValueObject {
 	public void setIntgCdId(String intgCdId) {
 		this.intgCdId = intgCdId;
 	}
-	
+
 	/**
 	 * VO Data Value( C:Creation, U:Update, D:Delete )
 	 * @param ibflag
@@ -332,7 +332,7 @@ public class MasterVO extends AbstractValueObject {
 	public void setIbflag(String ibflag) {
 		this.ibflag = ibflag;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @param intgCdUseFlg
@@ -340,7 +340,7 @@ public class MasterVO extends AbstractValueObject {
 	public void setIntgCdUseFlg(String intgCdUseFlg) {
 		this.intgCdUseFlg = intgCdUseFlg;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @param creUsrId
@@ -348,7 +348,7 @@ public class MasterVO extends AbstractValueObject {
 	public void setCreUsrId(String creUsrId) {
 		this.creUsrId = creUsrId;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @param intgCdNm
@@ -356,7 +356,7 @@ public class MasterVO extends AbstractValueObject {
 	public void setIntgCdNm(String intgCdNm) {
 		this.intgCdNm = intgCdNm;
 	}
-	
+
 	/**
 	 * Column Info
 	 * @param updUsrId
@@ -364,7 +364,7 @@ public class MasterVO extends AbstractValueObject {
 	public void setUpdUsrId(String updUsrId) {
 		this.updUsrId = updUsrId;
 	}
-	
+
 /**
 	 * Request 의 데이터를 추출하여 VO 의 멤버변수에 설정.
 	 * @param request
@@ -404,20 +404,20 @@ public class MasterVO extends AbstractValueObject {
 	}
 
 	/**
-	 * Request 넘어온 여러 건 DATA를 VO Class 에 담는다. 
+	 * Request 넘어온 여러 건 DATA를 VO Class 에 담는다.
 	 * @param request
 	 * @param prefix
 	 * @return MasterVO[]
 	 */
 	public MasterVO[] fromRequestGrid(HttpServletRequest request, String prefix) {
 		MasterVO model = null;
-		
+
 		String[] tmp = request.getParameterValues(prefix + "ibflag");
   		if(tmp == null)
    			return null;
 
   		int length = request.getParameterValues(prefix + "ibflag").length;
-  
+
 		try {
 			String[] updDt = (JSPUtil.getParameter(request, prefix	+ "upd_dt", length));
 			String[] intgCdLen = (JSPUtil.getParameter(request, prefix	+ "intg_cd_len", length));
@@ -433,7 +433,7 @@ public class MasterVO extends AbstractValueObject {
 			String[] creUsrId = (JSPUtil.getParameter(request, prefix	+ "cre_usr_id", length));
 			String[] intgCdNm = (JSPUtil.getParameter(request, prefix	+ "intg_cd_nm", length));
 			String[] updUsrId = (JSPUtil.getParameter(request, prefix	+ "upd_usr_id", length));
-			
+
 			for (int i = 0; i < length; i++) {
 				model = new MasterVO();
 				if (updDt[i] != null)
@@ -481,7 +481,7 @@ public class MasterVO extends AbstractValueObject {
 		MasterVO[] vos = (MasterVO[])models.toArray(new MasterVO[models.size()]);
 		return vos;
 	}
-	
+
 	/**
 	 * VO Class의 내용을 String으로 변환
 	 */

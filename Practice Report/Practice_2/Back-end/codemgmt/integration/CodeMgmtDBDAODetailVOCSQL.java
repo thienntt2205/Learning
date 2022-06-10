@@ -1,13 +1,13 @@
 /*=========================================================
 *Copyright(c) 2022 CyberLogitec
 *@FileName : CodeMgmtDBDAODetailVOCSQL.java
-*@FileTitle : 
+*@FileTitle :
 *Open Issues :
 *Change history :
 *@LastModifyDate : 2022.04.19
-*@LastModifier : 
+*@LastModifier :
 *@LastVersion : 1.0
-* 2022.04.19 
+* 2022.04.19
 * 1.0 Creation
 =========================================================*/
 package com.clt.apps.opus.dou.doutraining.codemgmt.integration ;
@@ -18,7 +18,7 @@ import com.clt.framework.support.db.ISQLTemplate;
 
 /**
  *
- * @author Truong Vu
+ * @author Thien
  * @see DAO 참조
  * @since J2EE 1.6
  */
@@ -26,12 +26,12 @@ import com.clt.framework.support.db.ISQLTemplate;
 public class CodeMgmtDBDAODetailVOCSQL implements ISQLTemplate{
 
 	private StringBuffer query = new StringBuffer();
-	
+
 	Logger log =Logger.getLogger(this.getClass());
-	
+
 	/** Parameters definition in params/param elements */
 	private HashMap<String,String[]> params = null;
-	
+
 	/**
 	  * <pre>
 	  * DESC Enter..
@@ -91,16 +91,16 @@ public class CodeMgmtDBDAODetailVOCSQL implements ISQLTemplate{
 		}
 		params.put("cre_usr_id",new String[]{arrTmp[0],arrTmp[1]});
 
-		query.append("/*").append("\n"); 
-		query.append("Path : com.clt.apps.opus.dou.doutraining.codemgmt.integration ").append("\n"); 
-		query.append("FileName : CodeMgmtDBDAODetailVOCSQL").append("\n"); 
-		query.append("*/").append("\n"); 
+		query.append("/*").append("\n");
+		query.append("Path : com.clt.apps.opus.dou.doutraining.codemgmt.integration ").append("\n");
+		query.append("FileName : CodeMgmtDBDAODetailVOCSQL").append("\n");
+		query.append("*/").append("\n");
 	}
-	
+
 	public String getSQL(){
 		return query.toString();
 	}
-	
+
 	public HashMap<String,String[]> getParams() {
 		return params;
 	}
@@ -109,34 +109,34 @@ public class CodeMgmtDBDAODetailVOCSQL implements ISQLTemplate{
 	 * Query 생성
 	 */
 	public void setQuery(){
-		query.append("insert into com_intg_cd_dtl" ).append("\n"); 
-		query.append("(" ).append("\n"); 
-		query.append("    intg_cd_id," ).append("\n"); 
-		query.append("    intg_cd_val_ctnt," ).append("\n"); 
-		query.append("    intg_cd_val_dp_desc," ).append("\n"); 
-		query.append("    intg_cd_val_desc," ).append("\n"); 
-		query.append("    intg_cd_val_dp_seq," ).append("\n"); 
-		query.append("    aply_st_dt," ).append("\n"); 
-		query.append("    aply_end_dt," ).append("\n"); 
-		query.append("    cre_usr_id," ).append("\n"); 
-		query.append("    cre_dt," ).append("\n"); 
-		query.append("    upd_usr_id," ).append("\n"); 
-		query.append("    upd_dt" ).append("\n"); 
-		query.append(")" ).append("\n"); 
-		query.append("values" ).append("\n"); 
-		query.append("(" ).append("\n"); 
-		query.append("	@[intg_cd_id], " ).append("\n"); 
-		query.append("	@[intg_cd_val_ctnt], " ).append("\n"); 
-		query.append("	@[intg_cd_val_dp_desc]," ).append("\n"); 
-		query.append("	@[intg_cd_val_desc], " ).append("\n"); 
-		query.append("	@[intg_cd_val_dp_seq]," ).append("\n"); 
-		query.append("	''," ).append("\n"); 
-		query.append("	''," ).append("\n"); 
-		query.append("	@[cre_usr_id], " ).append("\n"); 
-		query.append("	sysdate, " ).append("\n"); 
-		query.append("	@[upd_usr_id], " ).append("\n"); 
-		query.append("	sysdate" ).append("\n"); 
-		query.append(")" ).append("\n"); 
+		query.append("insert into com_intg_cd_dtl" ).append("\n");
+		query.append("(" ).append("\n");
+		query.append("    intg_cd_id," ).append("\n");
+		query.append("    intg_cd_val_ctnt," ).append("\n");
+		query.append("    intg_cd_val_dp_desc," ).append("\n");
+		query.append("    intg_cd_val_desc," ).append("\n");
+		query.append("    intg_cd_val_dp_seq," ).append("\n");
+		query.append("    aply_st_dt," ).append("\n");
+		query.append("    aply_end_dt," ).append("\n");
+		query.append("    cre_usr_id," ).append("\n");
+		query.append("    cre_dt," ).append("\n");
+		query.append("    upd_usr_id," ).append("\n");
+		query.append("    upd_dt" ).append("\n");
+		query.append(")" ).append("\n");
+		query.append("values" ).append("\n");
+		query.append("(" ).append("\n");
+		query.append("	@[intg_cd_id], " ).append("\n");
+		query.append("	@[intg_cd_val_ctnt], " ).append("\n");
+		query.append("	@[intg_cd_val_dp_desc]," ).append("\n");
+		query.append("	@[intg_cd_val_desc], " ).append("\n");
+		query.append("	@[intg_cd_val_dp_seq]," ).append("\n");
+		query.append("	''," ).append("\n");
+		query.append("	''," ).append("\n");
+		query.append("	@[cre_usr_id], " ).append("\n");
+		query.append("	sysdate, " ).append("\n");
+		query.append("	@[upd_usr_id], " ).append("\n");
+		query.append("	sysdate" ).append("\n");
+		query.append(")" ).append("\n");
 
 	}
 }

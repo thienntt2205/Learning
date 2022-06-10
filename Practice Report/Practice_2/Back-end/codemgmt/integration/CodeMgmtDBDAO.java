@@ -5,9 +5,9 @@
 *Open Issues :
 *Change history :
 *@LastModifyDate : 2022.05.13
-*@LastModifier : 
+*@LastModifier :
 *@LastVersion : 1.0
-* 2022.04.15 
+* 2022.04.15
 * 1.0 Creation
 =========================================================*/
 package com.clt.apps.opus.dou.doutraining.codemgmt.integration;
@@ -32,15 +32,15 @@ import com.clt.apps.opus.dou.doutraining.codemgmt.vo.DetailVO;
 /**
  * ALPS CodeMgmtDBDAO <br>
  * - JDBC operation to process ALPS-DouTraining system business logic.<br>
- * 
- * @author Truong Vu
+ *
+ * @author Thien
  * @see CodeMgmtBCImpl 참조
  * @since J2EE 1.6
  */
 public class CodeMgmtDBDAO extends DBDAOSupport {
 	/**
 	 * [searchMasterCodeMgmt] to get a list of Code.<br>
-	 * 
+	 *
 	 * @param MasterVO masterVO
 	 * @return List<MasterVO>
 	 * @exception DAOException
@@ -78,7 +78,7 @@ public class CodeMgmtDBDAO extends DBDAOSupport {
 
 	/**
 	 * [searchDetailCodeMgmt] to get a list of Code detail.<br>
-	 * 
+	 *
 	 * @param DetailVO detailVO
 	 * @return List<DetailVO>
 	 * @exception DAOException
@@ -116,7 +116,7 @@ public class CodeMgmtDBDAO extends DBDAOSupport {
 
 	/**
 	 * [addmanageMasterCodeMgmtS] to add Codes.<br>
-	 * 
+	 *
 	 * @param List<MasterVO> masterVO
 	 * @return int[]
 	 * @exception DAOException
@@ -148,7 +148,7 @@ public class CodeMgmtDBDAO extends DBDAOSupport {
 
 	/**
 	 * [modifymanageMasterCodeMgmtS] to update Codes.<br>
-	 * 
+	 *
 	 * @param List<MasterVO> masterVO
 	 * @return int[]
 	 * @exception DAOException
@@ -180,7 +180,7 @@ public class CodeMgmtDBDAO extends DBDAOSupport {
 
 	/**
 	 * [removemanageMasterCodeMgmtS] to delete Codes.<br>
-	 * 
+	 *
 	 * @param List<MasterVO> masterVO
 	 * @return int[]
 	 * @exception DAOException
@@ -212,7 +212,7 @@ public class CodeMgmtDBDAO extends DBDAOSupport {
 
 	/**
 	 * [addmanageDetailCodeMgmtS] to add CodeDetails.<br>
-	 * 
+	 *
 	 * @param List<DetailVO> detailVO
 	 * @return int[]
 	 * @exception DAOException
@@ -244,7 +244,7 @@ public class CodeMgmtDBDAO extends DBDAOSupport {
 
 	/**
 	 * [modifymanageDetailCodeMgmtS] to update CodeDetails.<br>
-	 * 
+	 *
 	 * @param List<DetailVO> detailVO
 	 * @return int[]
 	 * @exception DAOException
@@ -276,7 +276,7 @@ public class CodeMgmtDBDAO extends DBDAOSupport {
 
 	/**
 	 * [removemanageDetailCodeMgmtS] to delete CodeDetails.<br>
-	 * 
+	 *
 	 * @param List<DetailVO> detailVO
 	 * @return int[]
 	 * @exception DAOException
@@ -308,7 +308,7 @@ public class CodeMgmtDBDAO extends DBDAOSupport {
 
 	/**
 	 * [duplicatecodeMgmt] to check duplicate intg_cd_id.<br>
-	 * 
+	 *
 	 * @param MasterVO masterVO
 	 * @return int
 	 * @exception DAOException
@@ -344,7 +344,7 @@ public class CodeMgmtDBDAO extends DBDAOSupport {
 
 	/**
 	 * [removeDetailByMasterCdId] to delete detail by master cd_id.<br>
-	 * 
+	 *
 	 * @param List<DetailVO> detailVO
 	 * @return int[]
 	 * @exception DAOException
