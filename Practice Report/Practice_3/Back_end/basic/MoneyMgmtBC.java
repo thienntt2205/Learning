@@ -5,7 +5,7 @@
  *Open Issues :
  *Change history :
  *@LastModifyDate : 2022.06.13
- *@LastModifier : 
+ *@LastModifier :
  *@LastVersion : 1.0
  * 2022.04.22
  * 1.0 Creation
@@ -22,13 +22,13 @@ import com.clt.framework.core.layer.event.EventException;
  * ALPS-Practice3 Business Logic Command Interface<br>
  * - Interface to business logic for ALPS-Practice3<br>
  *
- * @author Truong Vu
+ * @author Thien
  * @since J2EE 1.6
  */
 public interface MoneyMgmtBC {
 	/**
 	 * [searchSummaryMoneyMgmt] to get a list of summaryMoney.<br>
-	 * 
+	 *
 	 * @param SummaryVO	summaryVO
 	 * @return List<SummaryVO>
 	 * @exception EventException
@@ -38,17 +38,17 @@ public interface MoneyMgmtBC {
 
 	/**
 	 * [searchPartner] to get a list of partner.<br>
-	 * 
+	 *
 	 * @param
 	 * @return List<SummarySearchPartnerVO>
 	 * @exception EventException
 	 */
-	public List<SummaryVO> searchPartner() 
+	public List<SummaryVO> searchPartner()
 			throws EventException;
 
 	/**
 	 * [searchLane] to get a list of lane.<br>
-	 * 
+	 *
 	 * @param SummarySearchLaneVO	laneVO
 	 * @return List<SummaryVO>
 	 * @exception EventException
@@ -58,7 +58,7 @@ public interface MoneyMgmtBC {
 
 	/**
 	 * [searchTrade] to get a list of trade.<br>
-	 * 
+	 *
 	 * @param SummarySearchTradeVO	tradeVO
 	 * @return Map<String, String>
 	 * @exception EventException
@@ -68,7 +68,7 @@ public interface MoneyMgmtBC {
 
 	/**
 	 * [searchDetailMoneyMgmt] to get a list of detailMoney.<br>
-	 * 
+	 *
 	 * @param DetailVO	detailVO
 	 * @return List<DetailVO>
 	 * @exception EventException
