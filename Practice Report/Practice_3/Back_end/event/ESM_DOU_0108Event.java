@@ -4,7 +4,7 @@
  *@FileTitle : Money Management
  *Open Issues :
  *Change history :
- *@LastModifyDate : 2022.05.13
+ *@LastModifyDate : 2022.06.13
  *@LastModifier : 
  *@LastVersion : 1.0
  * 2022.04.22
@@ -22,7 +22,7 @@ import com.clt.framework.support.layer.event.EventSupport;
  * - Used as PDTO delivered to ServiceCommand Layer<br>
  *
  * @author Thien
- * @see ESM_DOU_0108HTMLAction 참조
+ * @see ESM_DOU_0108HTMLAction Reference
  * @since J2EE 1.6
  */
 public class ESM_DOU_0108Event extends EventSupport {

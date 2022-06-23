@@ -5,7 +5,7 @@
  *Open Issues :
  *Change history :
  *@LastModifyDate : 2022.06.13
- *@LastModifier :
+ *@LastModifier : 
  *@LastVersion : 1.0
  * 2022.04.22
  * 1.0 Creation
@@ -44,7 +44,7 @@ public class MoneyMgmtBCImpl extends BasicCommandSupport implements MoneyMgmtBC 
 
 	/**
 	 * [searchSummaryMoneyMgmt] to get a list of summaryMoney.<br>
-	 *
+	 * 
 	 * @param SummaryVO	summaryVO
 	 * @return List<SummaryVO>
 	 * @exception EventException
@@ -62,12 +62,12 @@ public class MoneyMgmtBCImpl extends BasicCommandSupport implements MoneyMgmtBC 
 
 	/**
 	 * [searchPartner] to get a list of partner.<br>
-	 *
-	 * @param
+	 * 
+	 * @param 
 	 * @return List<SummarySearchPartnerVO>
 	 * @exception EventException
 	 */
-	public List<SummaryVO> searchPartner()
+	public List<SummaryVO> searchPartner() 
 			throws EventException {
 		try {
 			return dbDao.searchPartner();
@@ -80,7 +80,7 @@ public class MoneyMgmtBCImpl extends BasicCommandSupport implements MoneyMgmtBC 
 
 	/**
 	 * [searchLane] to get a list of lane.<br>
-	 *
+	 * 
 	 * @param SummarySearchLaneVO	laneVO
 	 * @return Map<String, String>
 	 * @exception EventException
@@ -98,7 +98,7 @@ public class MoneyMgmtBCImpl extends BasicCommandSupport implements MoneyMgmtBC 
 
 	/**
 	 * [searchTrade] to get a list of trade.<br>
-	 *
+	 * 
 	 * @param SummarySearchTradeVO	tradeVO
 	 * @return Map<String, String>
 	 * @exception EventException
@@ -116,7 +116,7 @@ public class MoneyMgmtBCImpl extends BasicCommandSupport implements MoneyMgmtBC 
 
 	/**
 	 * [searchDetailMoneyMgmt] to get a list of detailMoney.<br>
-	 *
+	 * 
 	 * @param DetailVO	detailVO
 	 * @return List<DetailVO>
 	 * @exception EventException

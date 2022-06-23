@@ -33,6 +33,10 @@ var tabObjects = new Array();
 var tabCnt = 0;
 var beforeTab = 1;
 var checkOK = false;
+
+
+
+
 // Define an event handler that receives and handles button click events
 document.onclick = processButtonClick;
 document.onkeydown = logKey;
@@ -45,6 +49,7 @@ function logKey(key) {
 	if (key.code == 'Enter') {
 		if (!checkOverThreeMonth()) {
 			if (!checkOK) {
+				//Warning box, let user chose if want to get data over 3 months
 				if (confirm("Year Month over 3 months, do you really want to get data?")) {
 					checkOK = true;
 
@@ -82,21 +87,21 @@ function processButtonClick() {
 			break;
 		case "btn_datefrom_down":
 			addMonth(formObject.acct_yrmon_from, -1);
-			yearmonth_onchange();
+			yearmonth_Onchange();
 			break;
 		case "btn_datefrom_up":
 			addMonth(formObject.acct_yrmon_from, 1);
 			excuteCheck();
-			yearmonth_onchange();
+			yearmonth_Onchange();
 			break;
 		case "btn_dateto_down":
 			addMonth(formObject.acct_yrmon_to, -1);
 			excuteCheck();
-			yearmonth_onchange();
+			yearmonth_Onchange();
 			break;
 		case "btn_dateto_up":
 			addMonth(formObject.acct_yrmon_to, 1);
-			yearmonth_onchange();
+			yearmonth_Onchange();
 			break;
 		case "btn_New":
 			resetForm(formObject);
@@ -170,8 +175,8 @@ function initSheet(sheetObj,sheetNo) {
 	       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "jo_crr_cd",       KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}, 
 	       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "rlane_cd",        KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}, 
 	       	             { Type: "Text",   Hidden: 0, Width: 150, Align: "Center", ColMerge: 0, SaveName: "inv_no",          KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}, 
-	       	             { Type: "Text",   Hidden: 0, Width: 200, Align: "Center",   ColMerge: 0, SaveName: "csr_no",          KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}, 
-	       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center",   ColMerge: 0, SaveName: "apro_flg",        KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+	       	             { Type: "Text",   Hidden: 0, Width: 200, Align: "Center", ColMerge: 0, SaveName: "csr_no",          KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}, 
+	       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "apro_flg",        KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
 	       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "locl_curr_cd",    KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
 	       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "inv_rev_act_amt", KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
 	       	          	 { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "inv_exp_act_amt", KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
@@ -204,7 +209,7 @@ function initSheet(sheetObj,sheetNo) {
 		       	             { Type: "Text",   Hidden: 0, Width: 150, Align: "Center", ColMerge: 0, SaveName: "inv_no",          KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}, 
 		       	             { Type: "Text",   Hidden: 0, Width: 200, Align: "Center", ColMerge: 0, SaveName: "csr_no",          KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}, 
 		       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "apro_flg",        KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
-		       	             { Type: "Combo",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "rev_exp",         KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0, ComboText: "Rev|Exp", ComboCode: "R|E"},
+		       	             { Type: "Combo",  Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "rev_exp",         KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0, ComboText: "Rev|Exp", ComboCode: "R|E"},
 		       	          	 { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "item",        	 KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
 		       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "locl_curr_cd",    KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
 		       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "inv_rev_act_amt", KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
@@ -229,7 +234,10 @@ function doActionIBSheet(sheetObj,formObj,sAction) {
 		case IBSEARCH: // retrieve
  			if (sheetObj.id == "sheet1" ) {
  				ComOpenWait(true);
+ 				// formObj - hidden input content value action ex MULTI, SEARCH
  				formObj.f_cmd.value = SEARCH;
+ 				// FormQueryString only get data from input form
+ 				// *getSaveString in getSaveData from DoSave get data from sheet
  	 			sheetObj.DoSearch("ESM_DOU_0108GS.do", FormQueryString(formObj));
 			}
 			else if (sheetObj.id == "sheet2"){
@@ -252,6 +260,7 @@ function doActionIBSheet(sheetObj,formObj,sAction) {
 	}
 }
 
+// resize sheet depend on display res
 function resizeSheet() {
 	ComResizeSheet(sheetObjects[0]);
 	ComResizeSheet(sheetObjects[1]);
@@ -273,10 +282,11 @@ function initPeriod() {
 	var ymTo = ComGetNowInfo("ym", "-");
 	formObj.acct_yrmon_to.value = ymTo;
 	var ymFrom = ComGetDateAdd(formObj.acct_yrmon_to.value + "-01", "M", -2);
-	formObj.acct_yrmon_from.value = SetDateFormat(ymFrom, "ym");
+	formObj.acct_yrmon_from.value = setDateFormat(ymFrom, "ym");
 }
+
 // Set format date
-function SetDateFormat(obj, sFormat) {
+function setDateFormat(obj, sFormat) {
 	var objDate = String(getArgValue(obj));
 	objDate = objDate.replace(/\/|\-|\.|\:|\ /g, "");
 	if (ComIsEmpty(objDate))
@@ -309,7 +319,7 @@ function checkDateCondition() {
 	return true;
 }
 
-// Excute check condition
+// Execute check condition
 function excuteCheck() {
 	if (!checkDateCondition()) {
 		initPeriod();
@@ -317,12 +327,12 @@ function excuteCheck() {
 }
 
 // Handling event after change yearmonth
-function yearmonth_onchange() {
+function yearmonth_Onchange() {
 	sheetObjects[0].RemoveAll();
 	sheetObjects[1].RemoveAll();
 }
 
-// Check between from date and to date over three month
+// Check if between from date and to date over three months
 function checkOverThreeMonth() {
 	var formObj = document.form;
 	var fromDate = formObj.acct_yrmon_from.value.replaceStr("-", "") + "01";
@@ -346,6 +356,7 @@ function setComboObject(combo_obj) {
 // {initCombo} functions that define the basic properties of the combo on the
 // screen
 function initCombo(comboObj, comboNo) {
+	// alias for document.form
 	var formObj = document.form
 	switch (comboNo) {
 	case 1:
@@ -450,6 +461,7 @@ function s_jo_crr_cd_OnCheckClick(Index, Code, Checked) {
 		}
 	}
 	if (checkSelectCount == 0) {
+		// Recheck "All" item and uncheck/disable others
 		s_jo_crr_cd.SetItemCheck(0, true, false);
 		s_rlane_cd.RemoveAll();
 		s_trade_cd.RemoveAll();
@@ -469,6 +481,7 @@ function s_rlane_cd_OnChange() {
 function setTabObject(tab_obj) {
 	tabObjects[tabCnt++] = tab_obj;
 }
+
 //================================================================================
 
 // {initTab} functions that define the basic properties of the tab on the screen
@@ -483,6 +496,7 @@ function initTab(tabObj, tabNo) {
 		break;
 	}
 }
+
 // handling event when have change
 function tab1_OnChange(tabObj, nItem) {
 	var objs = document.all.item("tabLayer");
@@ -516,7 +530,7 @@ function selectRowToOtherSheet(sheetFrom, sheetTo, Row, sFr, sTo){
 			indexCode     = sheetTo.FindText(9  + sTo,sheetFrom.GetCellValue(Row,sFr + 9) ,i);
 			indexName     = sheetTo.FindText(10 + sTo,sheetFrom.GetCellValue(Row,sFr + 10),i);
 			if (indexLane == indexPartner && 
-					indexInvoice == indexLane && 
+					indexInvoice == indexLane &&
 					indexSlip == indexInvoice && 
 					indexApproved == indexSlip && 
 					indexCurr == indexApproved && 
@@ -532,7 +546,7 @@ function selectRowToOtherSheet(sheetFrom, sheetTo, Row, sFr, sTo){
 	sheetTo.SetSelectRow(indexSelected);
 }
 
-//reset search option and sheet
+// reset search option and sheet
 function resetForm(formObj){
 	sheetObjects[0].RemoveAll();
 	sheetObjects[1].RemoveAll();
@@ -541,7 +555,7 @@ function resetForm(formObj){
 	initPeriod();
 }
 
-//handling event double click when double click one row in sheet1
+// handling event double click when double click one row in sheet1
 function sheet1_OnDblClick(sheetObj, Row, Col, CellX, CellY, CellW, CellH){
 	var formObj = document.form;
 	if (sheetObj.GetCellValue(Row,"jo_crr_cd") == ''){
@@ -553,7 +567,7 @@ function sheet1_OnDblClick(sheetObj, Row, Col, CellX, CellY, CellW, CellH){
 	}
 }
 
-//handling event double click when double click one row in sheet2
+// handling event double click when double click one row in sheet2
 function sheet2_OnDblClick(sheetObj, Row, Col, CellX, CellY, CellW, CellH){
 	var formObj = document.form;
 	if (sheetObj.GetCellValue(Row,"jo_crr_cd") == ''){
@@ -565,7 +579,7 @@ function sheet2_OnDblClick(sheetObj, Row, Col, CellX, CellY, CellW, CellH){
 	}
 }
 
-//Handling event after searching sheet1
+// Handling event after searching sheet1
 function sheet1_OnSearchEnd(sheetObj, Code, Msg, StCode, StMsg) { 
 	ComOpenWait(false);
 	var totalRow = sheetObj.RowCount();
@@ -587,7 +601,7 @@ function sheet1_OnSearchEnd(sheetObj, Code, Msg, StCode, StMsg) {
 	}
 }
 
-//Handling event after searching sheet2
+// Handling event after searching sheet2
 function sheet2_OnSearchEnd(sheetObj, Code, Msg, StCode, StMsg) { 
 	ComOpenWait(false);
 	var totalRow = sheetObj.RowCount();
@@ -607,7 +621,7 @@ function sheet2_OnSearchEnd(sheetObj, Code, Msg, StCode, StMsg) {
 	}
 }
 
-//Handling validate
+// Handling validate
 function validateForm(sheetObj, formObj, sAction) {
 	sheetObj.ShowDebugMsg(false);
 }
