@@ -139,7 +139,6 @@ public class ESM_DOU_0108SC extends ServiceCommandSupport {
 		}
 		return eventResponse;
 	}
-
 	private EventResponse searchTrade(Event e) throws EventException {
 		GeneralEventResponse eventResponse = new GeneralEventResponse();
 		ESM_DOU_0108Event event = (ESM_DOU_0108Event) e;

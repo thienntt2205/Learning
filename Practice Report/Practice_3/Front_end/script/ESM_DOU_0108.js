@@ -449,15 +449,15 @@ function s_jo_crr_cd_OnCheckClick(Index, Code, Checked) {
 		var bChk = s_jo_crr_cd.GetItemCheck(Code);
 		if (bChk) {
 			s_jo_crr_cd.SetItemCheck(0, false);
-			s_rlane_cd.SetEnable(true);
-			getLaneComboData();
+			// s_rlane_cd.SetEnable(true);
+			// getLaneComboData();
 		}
 	}
 
 	for (var i = 0; i < count; i++) {
 		if (s_jo_crr_cd.GetItemCheck(i)) {
 			checkSelectCount += 1;
-			getLaneComboData();
+			// getLaneComboData();
 		}
 	}
 	if (checkSelectCount == 0) {
@@ -470,12 +470,25 @@ function s_jo_crr_cd_OnCheckClick(Index, Code, Checked) {
 	}
 }
 
-// Handling event when lane combo change
-function s_rlane_cd_OnChange() {
-	s_trade_cd.SetEnable(true);
-	getTradeComboData();
-
+//Handling event when user done select parter item
+function s_jo_crr_cd_OnBlur(){
+	ComOpenWait(true);
+	getLaneComboData();
+	ComOpenWait(false);
 }
+
+//function s_rlane_cd_OnBlur(){
+//	ComOpenWait(true);
+//	getTradeComboData();
+//	ComOpenWait(false);
+//}
+
+//Handling event when lane combo change
+ function s_rlane_cd_OnChange() {
+ 	s_trade_cd.SetEnable(true);
+ 	getTradeComboData();
+
+ }
 
 // {setTabObject} to put combo objects in global variable "tabObjects"
 function setTabObject(tab_obj) {
@@ -562,7 +575,7 @@ function sheet1_OnDblClick(sheetObj, Row, Col, CellX, CellY, CellW, CellH){
 		return;
 	}
 	else{
-		selectRowToOtherSheet(sheetObj, sheetObjects[1],Row,0,2);
+		selectRowToOtherSheet(sheetObj, sheetObjectxs[1],Row,0,2);
 		tab1.SetSelectedIndex(1);
 	}
 }
