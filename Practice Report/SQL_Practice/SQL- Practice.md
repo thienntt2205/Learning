@@ -2,6 +2,7 @@
 
 Database test
 ![Db_test.png](./imgs/DB_test.png)
+
 ## Câu 1: Giải thích các hàm thông dụng sau
 
 | Stt | Tên Hàm      | Mục đích sử dụng & nên sử dụng khi nào                                                                 |
@@ -34,7 +35,7 @@ Database test
 ```sql
 SELECT *
 FROM MDM_CUSTOMER A
-WHERE A.CUST_LGL_ENG_NM LIKE ‘ % \ _LOGISTICS % ’ ESCAPE ‘ \ ’
+WHERE A.CUST_LGL_ENG_NM LIKE ‘%\_LOGISTICS%’ ESCAPE ‘\’
 ORDER BY A.CUST_LOCL_LANG_NM NULLS FIRST
 ```
 
@@ -63,7 +64,6 @@ FROM MDM_CUSTOMER
 WHERE 1 = 1
   AND CUST_CNT_CD = 'JP'
   AND TO_CHAR(CUST_SEQ) = '201791'
-
 ```
 
 Theo bạn câu trên cách dùng `TO_CHAR(CUST_SEQ) = '201791'` có hợp lý không, tại sao?
@@ -72,13 +72,16 @@ Theo bạn câu trên cách dùng `TO_CHAR(CUST_SEQ) = '201791'` có hợp lý k
 
 ## Câu 4: cho câu SQL và kết quả như hình bên dưới
 
-A) Giải thích ý nghĩa ` COUNT(_), COUNT(1), COUNT(CUST_LOCL_LANG_NM)`
+![Câu_4](./imgs/C%C3%A2u_4.png)
 
-- Count(\_): đếm tổng số hàng trong bảng, bao gồm các giá trị null
+A) Giải thích ý nghĩa ` COUNT(*), COUNT(1), COUNT(CUST_LOCL_LANG_NM)`
+
+- Count(\*): đếm tổng số hàng trong bảng, bao gồm các giá trị null
 - Count(1): gán giá trị từ dấu ngoặc đơn cho mọi hàng trong bảng rồi đếm đếm tổng số hàng trong bảng, bao gồm các giá trị null
 - Count(CUST_LOCL_LANG_NM): Đếm tất cả các hàng trong cột được chỉ định không bao gồm giá trị null
 
 B) Tại sao `COUNT(CUST_LOCL_LANG_NM)` lại bằng 0:
+
 - Vì tất cả các hàng đều null
 
 ## Câu 5: có 2 cách như bên dưới, cách nào tốt tại sao
@@ -91,47 +94,80 @@ B) Tại sao `COUNT(CUST_LOCL_LANG_NM)` lại bằng 0:
 
 ## Câu 6: có 2 cách như bên dưới, cách nào tốt tại sao
 
-Cách 1 Cách 2
-NVL(SUM(COL1),0) + NVL(SUM(COL2),0) Ex.1] SUM(NVL(COL1 + COL2,0))
-Ex.2] NVL(SUM(COL1 + COL2),0)
- Cách 2 tốt hơn. Tại cách 2 chạy nhanh hơn (performance nhỏ hơn)
+| Cách 1                                | Cách 2                          |
+| ------------------------------------- | ------------------------------- |
+| `NVL(SUM(COL1),0) + NVL(SUM(COL2),0)` | `Ex.1] SUM(NVL(COL1 + COL2,0))` |
+|                                       | `Ex.2] NVL(SUM(COL1 + COL2),0)` |
+- 1 + NULL = NULL, nên nếu dùng giá trị từ 2 cột có giá trị null với cách (col1 + col2) sẽ ra sai kết quả
 
 ## Câu 7: có 2 cách như bên dưới, cách nào tốt tại sao
 
-Cách 1 Cách 2
+Cách 1
+
+```sql
 SELECT A.CUST_NO, A.ORD_NO, A.PRO_CD, B.PROD_NM
 FROM TB_ORD A,
-TB_PROD B
+  TB_PROD B
 WHERE 1 = 1
-AND A.PRO_CD = B.PROD_CD
-AND B.PROD_CD IN (SELECT PROD_CD FROM TB_PROD D WHERE D.PROD_CD = A.PRO_CD AND PROD_UNIT_AMT < 800); SELECT A.CUST_NO, A.ORD_NO, A.PRO_CD, B.PROD_NM
+  AND A.PRO_CD = B.PROD_CD
+  AND B.PROD_CD IN (SELECT PROD_CD
+NVL(SUM(COL1),0) + NVL(SUM(COL2),0) Ex.1] SUM(NVL(COL1 + COL2,0))
+```
+
+Cách 2
+
+```sql
+SELECT A.CUST_NO, A.ORD_NO, A.PRO_CD, B.PROD_NM
 FROM TB_ORD A,
-TB_PROD B
+  TB_PROD B
 WHERE 1 = 1
-AND A.PRO_CD = B.PROD_CD
-AND EXISTS (SELECT D.PROD_CD FROM TB_PROD D WHERE D.PROD_CD = A.PRO_CD AND D.PROD_UNIT_AMT < 800);
- Cách 2 tốt hơn. Tại cách 2 chạy nhanh hơn (performance nhỏ hơn)
- Dùng IN khi kết quả truy vấn phụ nhỏ, dùng EXISTS khi kết quả truy vấn phụ lớn
+  AND A.PRO_CD = B.PROD_CD
+  AND EXISTS (SELECT D.PROD_CD FROM
+```
+
+- Cách 2 tốt hơn. Vì cách 2 chạy nhanh hơn (test trong sqldeveloper tool)
+- Dùng IN khi kết quả truy vấn phụ nhỏ, dùng EXISTS khi kết quả truy vấn phụ lớn
 
 ## Câu 8: có 2 cách như bên dưới, cách nào tốt tại sao
 
-Cách 1 Cách 2
-SELECT A.CUST_NO, A.ORD_NO, A.PRO_CD, B.PROD_NM
+Cách 1
+```sql
+SELECT A.CUST_NO,
+       A.ORD_NO,
+       A.PRO_CD,
+       B.PROD_NM
 FROM TB_ORD A,
-TB_PROD B
+     TB_PROD B
 WHERE 1 = 1
-AND A.PRO_CD = B.PROD_CD
-AND B.PROD_CD IN ('00001','00002'); SELECT A.CUST_NO, A.ORD_NO, A.PRO_CD
-, (SELECT B.PROD_NM FROM TB_PROD B WHERE B.PROD_CD = A.PRO_CD) AS PROD_NM
+  AND A.PRO_CD = B.PROD_CD
+  AND B.PROD_CD IN ('00001',
+                    '00002');
+```
+
+Cách 2
+```sql
+SELECT A.CUST_NO,
+       A.ORD_NO,
+       A.PRO_CD ,
+
+  (SELECT B.PROD_NM
+   FROM TB_PROD B
+   WHERE B.PROD_CD = A.PRO_CD) AS PROD_NM
 FROM TB_ORD A
 WHERE 1 = 1
-AND A.PRO_CD IN ('00001','00002');
- Cách 2 tốt hơn. Tại cách 2 chạy nhanh hơn (performance nhỏ hơn)
+  AND A.PRO_CD IN ('00001',
+                   '00002');
+```
 
+```sql
+```
 ## Câu 9: cho số 8988.80 vui lòng xuất ra định dạng $8,988.800
 
-select to_char (8988.80,'$9,9999.999') from dual;
-
+```sql
+SELECT TO_CHAR (8988.80,
+                '$9,9999.999')
+FROM dual;
+```
 ## Câu 10: cho số 8988.80, 820988.80 vui lòng xuất ra định dạng $8,000.000, $820,000.000
 
 select to_char(trunc(8988.80,-3), 'L9G999G999D00') from dual;
