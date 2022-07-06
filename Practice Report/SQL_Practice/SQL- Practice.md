@@ -42,19 +42,13 @@ ORDER BY A.CUST_LOCL_LANG_NM NULLS FIRST
 A) Vui lòng giải thích ý nghĩa của câu SQL trên:
 
 - Hiển thị tất cả các cột trong bảng mdm_customer theo điều kiện và sắp theo cột locl_lang_nm với các giá trị null ở các dòng đầu tiên.
-
-B) ý nghĩa của việc dùng `ESCAPSE`:
-
+  B) ý nghĩa của việc dùng ESCAPSE:
 - Biến ký tự sau escape trở thành ký tự bình thường
-
-C) Ý nghĩa của việc dung Nulls First:
-
+  C) Ý nghĩa của việc dung Nulls First:
 - Để những ô null lên đầu tiên
-
-D) Ý nghĩa của việc dung alias, có nên dung alias trong mọi trường hợp không?
-
+  D) Ý nghĩa của việc dung alias, có nên dung alias trong mọi trường hợp không?
 - Giúp đặt tên ngắn, dễ viết.
-- Không nên dùng trong mọi trường họp
+- Không nên dùng alias cho mọi trường hợp
 
 ## Câu 3:
 
@@ -98,6 +92,7 @@ B) Tại sao `COUNT(CUST_LOCL_LANG_NM)` lại bằng 0:
 | ------------------------------------- | ------------------------------- |
 | `NVL(SUM(COL1),0) + NVL(SUM(COL2),0)` | `Ex.1] SUM(NVL(COL1 + COL2,0))` |
 |                                       | `Ex.2] NVL(SUM(COL1 + COL2),0)` |
+
 - 1 + NULL = NULL, nên nếu dùng giá trị từ 2 cột có giá trị null với cách (col1 + col2) sẽ ra sai kết quả
 
 ## Câu 7: có 2 cách như bên dưới, cách nào tốt tại sao
@@ -131,6 +126,7 @@ WHERE 1 = 1
 ## Câu 8: có 2 cách như bên dưới, cách nào tốt tại sao
 
 Cách 1
+
 ```sql
 SELECT A.CUST_NO,
        A.ORD_NO,
@@ -145,6 +141,7 @@ WHERE 1 = 1
 ```
 
 Cách 2
+
 ```sql
 SELECT A.CUST_NO,
        A.ORD_NO,
@@ -160,7 +157,9 @@ WHERE 1 = 1
 ```
 
 ```sql
+
 ```
+
 ## Câu 9: cho số 8988.80 vui lòng xuất ra định dạng $8,988.800
 
 ```sql
@@ -168,16 +167,21 @@ SELECT TO_CHAR (8988.80,
                 '$9,9999.999')
 FROM dual;
 ```
+
 ## Câu 10: cho số 8988.80, 820988.80 vui lòng xuất ra định dạng $8,000.000, $820,000.000
+
 ```sql
 SELECT to_char(trunc(8988.80, -3), 'L9G999G999D00')
 FROM dual;
 ```
+
 ```sql
 SELECT to_char(trunc(820988.80, -3), 'L9G999G999D00')
 FROM dual
 ```
+
 ## Câu 11: Cho cấu SQL và kết quả như sau:
+
 ![Câu_11](./imgs/C%C3%A2u_11.png)
 
 Như hình trên cả 2 A và B điêu substr từ 1, đến 3 tại sao kết quả lại khác nhau.
@@ -204,6 +208,7 @@ WHERE ROWNUM = 1
 ```
 
 ## Câu 14: ta có table (MDM_CUSTOMER) và dữ liệu như bên dưới
+
 ![Câu_14](./imgs/C%C3%A2u_14.png)
 
 Các field liên quan: CUST_CNT_CD, CUST_SEQ, CUST_GRP_HRCHY_CD, CUST_GRP_ID
@@ -236,6 +241,7 @@ where
 ```
 
 ## Câu 15: ta có table (TB_PROD) và dữ liệu như bên dưới
+
 ![câu_15](./imgs/C%C3%A2u_15.png)
 
 Viết câu SQL để suất ra kêt quả như sau:
@@ -248,18 +254,18 @@ FROM tb_prod;
 ```
 
 2. Lấy giá trị `min(PROD_UNIT_AMT)`
+
 ```sql
 SELECT min(PROD_UNIT_AMT)
 FROM tb_prod;
 ```
-   select min(PROD_UNIT_AMT) from tb_prod;
-3. Lấy giá trị trung bình PROD_UNIT_AMT
-   select avg(PROD_UNIT_AMT) from tb_prod;
-4. Lấy tên của sản phẩm có PROD_UNIT_AMT lớn nhất
-   select prod_unit_amt as MAX_AMT, prod_nm as MAX_NAME, a.minp as MIN_AMT, a.avgp as AVG
-   from tb_prod, (select max(PROD_UNIT_AMT) as MAXP, min(PROD_UNIT_AMT) as MINP, avg(PROD_UNIT_AMT) as AVGP from tb_prod) A
-   where prod_unit_amt = (select max(PROD_UNIT_AMT) from tb_prod) and tb_prod.prod_unit_amt = a.maxp;
-   Kết quả phải ra đc như sau:
+
+select min(PROD_UNIT_AMT) from tb_prod; 3. Lấy giá trị trung bình PROD_UNIT_AMT
+select avg(PROD_UNIT_AMT) from tb_prod; 4. Lấy tên của sản phẩm có PROD_UNIT_AMT lớn nhất
+select prod_unit_amt as MAX_AMT, prod_nm as MAX_NAME, a.minp as MIN_AMT, a.avgp as AVG
+from tb_prod, (select max(PROD_UNIT_AMT) as MAXP, min(PROD_UNIT_AMT) as MINP, avg(PROD_UNIT_AMT) as AVGP from tb_prod) A
+where prod_unit_amt = (select max(PROD_UNIT_AMT) from tb_prod) and tb_prod.prod_unit_amt = a.maxp;
+Kết quả phải ra đc như sau:
 
 ## Câu 16: ta có table (TB_ORD) và dữ liệu như bên dưới
 
