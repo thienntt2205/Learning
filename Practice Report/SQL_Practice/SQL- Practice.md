@@ -125,7 +125,7 @@ WHERE 1 = 1
   AND EXISTS (SELECT D.PROD_CD FROM
 ```
 
-- Cách 2 tốt hơn. Vì cách 2 chạy nhanh hơn (test trong sqldeveloper tool)
+- Cách 1 tốt hơn vì cách 1 cost thấp hơn
 - Dùng IN khi kết quả truy vấn phụ nhỏ, dùng EXISTS khi kết quả truy vấn phụ lớn
 
 ## Câu 8: có 2 cách như bên dưới, cách nào tốt tại sao
@@ -169,33 +169,42 @@ SELECT TO_CHAR (8988.80,
 FROM dual;
 ```
 ## Câu 10: cho số 8988.80, 820988.80 vui lòng xuất ra định dạng $8,000.000, $820,000.000
-
-select to_char(trunc(8988.80,-3), 'L9G999G999D00') from dual;
-select to_char(trunc(820988.80,-3), 'L9G999G999D00') from dual
-
+```sql
+SELECT to_char(trunc(8988.80, -3), 'L9G999G999D00')
+FROM dual;
+```
+```sql
+SELECT to_char(trunc(820988.80, -3), 'L9G999G999D00')
+FROM dual
+```
 ## Câu 11: Cho cấu SQL và kết quả như sau:
+![Câu_11](./imgs/C%C3%A2u_11.png)
 
 Như hình trên cả 2 A và B điêu substr từ 1, đến 3 tại sao kết quả lại khác nhau.
  Tại độ dài của to_char(98765,’fm00000’) là 5 số và độ dài của to_char(98765,’00000’) là 6 số. Do fm loại 1 khoảng trắng dành để biểu diễn dấu + - trong 1 chuỗi số trả về.
 
 ## Câu 12: Viết Câu SQL xuất ra, Ngày hiện tại, này hôm qua, ngày mai
 
-select sysdate + interval '-1' day as YESTERDAY,sysdate as NOW, sysdate + interval '1' day as TOMORROW
-from dual
+```sql
+SELECT sysdate + interval '-1' DAY AS YESTERDAY,
+       sysdate AS NOW,
+       sysdate + interval '1' DAY AS TOMORROW
+FROM dual
+```
 
 ## Câu 13: ta có table (TB_ORD), yêu cầu viết câu SQL để generate ORD_NO có đô dài 10 tự với format sau: yyyymmdd000Seq, ví dụ hnay là 20191028 và chưa có seq nào thì ORD_NO sẽ là 201910280001, và nếu đã tồn tại ORD_NO 201910280001 thì nó sẽ là 201910280002
 
-select
-concat(
-to_char(SYSDATE,'yyyyMMdd'),
-(select to_char(count(\*) + 1,'fm0000')
-from tb_ord
-where ord_dttm like concat(to_char(SYSDATE,'yyyyMMdd') , '\_\_\_\_' ))
-)
-from tb_ord
+```sql
+SELECT concat(to_char(SYSDATE, 'yyyyMMdd'),
+                (SELECT to_char(count(*) + 1, 'fm0000')
+                 FROM tb_ord
+                 WHERE ord_dttm like concat(to_char(SYSDATE, 'yyyyMMdd'), '____')))
+FROM tb_ord
 WHERE ROWNUM = 1
+```
 
 ## Câu 14: ta có table (MDM_CUSTOMER) và dữ liệu như bên dưới
+![Câu_14](./imgs/C%C3%A2u_14.png)
 
 Các field liên quan: CUST_CNT_CD, CUST_SEQ, CUST_GRP_HRCHY_CD, CUST_GRP_ID
 Dữ liệu cột CUST_GRP_HRCHY_CD có thể có(I: individual, C: Country, G: Global)
@@ -227,19 +236,22 @@ where
 ```
 
 ## Câu 15: ta có table (TB_PROD) và dữ liệu như bên dưới
+![câu_15](./imgs/C%C3%A2u_15.png)
 
-Viets cấu SQL để suất ra kêt quả như sau:
+Viết câu SQL để suất ra kêt quả như sau:
 
-1. Lấy max(PROD_UNIT_AMT)
+1. Lấy `max(PROD_UNIT_AMT)`
 
 ```sql
-select
-  max(PROD_UNIT_AMT)
-from
-  tb_prod;
+SELECT max(PROD_UNIT_AMT)
+FROM tb_prod;
 ```
 
-2. Lấy giá trị min(PROD_UNIT_AMT)
+2. Lấy giá trị `min(PROD_UNIT_AMT)`
+```sql
+SELECT min(PROD_UNIT_AMT)
+FROM tb_prod;
+```
    select min(PROD_UNIT_AMT) from tb_prod;
 3. Lấy giá trị trung bình PROD_UNIT_AMT
    select avg(PROD_UNIT_AMT) from tb_prod;
