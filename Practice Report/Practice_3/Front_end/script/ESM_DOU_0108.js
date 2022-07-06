@@ -5,9 +5,9 @@
  *Open Issues :
  *Change history :
  *@LastModifyDate : 2022.06.12
- *@LastModifier : 
+ *@LastModifier :
  *@LastVersion : 1.0
- * 2022.04.22  
+ * 2022.04.22
  * 1.0 Creation
 =========================================================*/
 /****************************************************************************************
@@ -49,7 +49,6 @@ function logKey(key) {
 	if (key.code == 'Enter') {
 		if (!checkOverThreeMonth()) {
 			if (!checkOK) {
-				//Warning box, let user chose if want to get data over 3 months
 				if (confirm("Year Month over 3 months, do you really want to get data?")) {
 					checkOK = true;
 
@@ -72,43 +71,43 @@ function processButtonClick() {
 	try {
 		var srcName = ComGetEvent("name");
 		switch (srcName) {
-		case "btn_Retrieve":
-			if (!checkOverThreeMonth()) {
-				if (!checkOK) {
-					if (confirm("Year Month over 3 months, do you really want to get data?")) {
-						checkOK = true;
-					} else {
-						return;
+			case "btn_Retrieve":
+				if (!checkOverThreeMonth()) {
+					if (!checkOK) {
+						if (confirm("Year Month over 3 months, do you really want to get data?")) {
+							checkOK = true;
+						} else {
+							return;
+						}
 					}
 				}
-			}
-			doActionIBSheet(sheetObject1, formObject, IBSEARCH);
-			doActionIBSheet(sheetObject2, formObject, IBSEARCH);
-			break;
-		case "btn_datefrom_down":
-			addMonth(formObject.acct_yrmon_from, -1);
-			yearmonth_Onchange();
-			break;
-		case "btn_datefrom_up":
-			addMonth(formObject.acct_yrmon_from, 1);
-			excuteCheck();
-			yearmonth_Onchange();
-			break;
-		case "btn_dateto_down":
-			addMonth(formObject.acct_yrmon_to, -1);
-			excuteCheck();
-			yearmonth_Onchange();
-			break;
-		case "btn_dateto_up":
-			addMonth(formObject.acct_yrmon_to, 1);
-			yearmonth_Onchange();
-			break;
-		case "btn_New":
-			resetForm(formObject);
-			break;
-		case "btn_DownExcel":
-			doActionIBSheet(sheetObject1, formObject, IBDOWNEXCEL);
-			break;
+				doActionIBSheet(sheetObject1, formObject, IBSEARCH);
+				doActionIBSheet(sheetObject2, formObject, IBSEARCH);
+				break;
+			case "btn_datefrom_down":
+				addMonth(formObject.acct_yrmon_from, -1);
+				yearmonth_onchange();
+				break;
+			case "btn_datefrom_up":
+				addMonth(formObject.acct_yrmon_from, 1);
+				excuteCheck();
+				yearmonth_onchange();
+				break;
+			case "btn_dateto_down":
+				addMonth(formObject.acct_yrmon_to, -1);
+				excuteCheck();
+				yearmonth_onchange();
+				break;
+			case "btn_dateto_up":
+				addMonth(formObject.acct_yrmon_to, 1);
+				yearmonth_onchange();
+				break;
+			case "btn_New":
+				resetForm(formObject);
+				break;
+			case "btn_DownExcel":
+				doActionIBSheet(sheetObject1, formObject, IBDOWNEXCEL);
+				break;
 		}
 	} catch (e) {
 		if (e == "[object Error]") {
@@ -159,70 +158,70 @@ function initSheet(sheetObj,sheetNo) {
 	var cnt = 0;
 	switch (sheetNo) {
 		case 1:
-			with(sheetObj){    
+			with(sheetObj){
 				var HeadTitle1 = "STS|Partner|Lane|Invoice No|Slip No|Approved|Curr.|Revenue|Expense|Customer/S.Provider|Customer/S.Provider";
 				var HeadTitle2 = "STS|Partner|Lane|Invoice No|Slip No|Approved|Curr.|Revenue|Expense|Code|Name"
-	
-	            SetConfig( { SearchMode:2, MergeSheet:5, Page:20, FrozenCol:0, DataRowMerge:1 } );
-	
-	            var info    = { Sort:1, ColMove:1, HeaderCheck:0, ColResize:1 };
-	            var headers = [ { Text: HeadTitle1, Align: "Center"},
-	                            { Text: HeadTitle2, Align: "Center"}];
-	            InitHeaders(headers, info);
-	            
-	            var cols = [ 
-	       	             { Type: "Status", Hidden: 1, Width: 50,  Align: "Center", ColMerge: 0, SaveName: "ibflag" },
-	       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "jo_crr_cd",       KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}, 
-	       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "rlane_cd",        KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}, 
-	       	             { Type: "Text",   Hidden: 0, Width: 150, Align: "Center", ColMerge: 0, SaveName: "inv_no",          KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}, 
-	       	             { Type: "Text",   Hidden: 0, Width: 200, Align: "Center", ColMerge: 0, SaveName: "csr_no",          KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}, 
-	       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "apro_flg",        KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
-	       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "locl_curr_cd",    KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
-	       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "inv_rev_act_amt", KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
-	       	          	 { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "inv_exp_act_amt", KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
-	       	          	 { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "prnr_ref_no",     KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
-	       	          	 { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "cust_vndr_eng_nm",KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}
-	       	             ];
-	            InitColumns(cols);
+
+				SetConfig( { SearchMode:2, MergeSheet:5, Page:20, FrozenCol:0, DataRowMerge:1 } );
+
+				var info    = { Sort:1, ColMove:1, HeaderCheck:0, ColResize:1 };
+				var headers = [ { Text: HeadTitle1, Align: "Center"},
+					{ Text: HeadTitle2, Align: "Center"}];
+				InitHeaders(headers, info);
+
+				var cols = [
+					{ Type: "Status", Hidden: 1, Width: 50,  Align: "Center", ColMerge: 0, SaveName: "ibflag" },
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "jo_crr_cd",       KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "rlane_cd",        KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 150, Align: "Center", ColMerge: 0, SaveName: "inv_no",          KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 200, Align: "Center", ColMerge: 0, SaveName: "csr_no",          KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "apro_flg",        KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "locl_curr_cd",    KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "inv_rev_act_amt", KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "inv_exp_act_amt", KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "prnr_ref_no",     KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "cust_vndr_eng_nm",KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}
+				];
+				InitColumns(cols);
 				SetEditable(1);
 				SetAutoSumPosition(1);
 				SetWaitImageVisible(0);
-				resizeSheet(); 
+				resizeSheet();
 			}
 			break;
 		case 2:
 			with(sheetObj){
 				var HeadTitle1 = "STS|Partner|Lane|Invoice No|Slip No|Approved|Rev/Exp|Item|Curr.|Revenue|Expense|Customer/S.Provider|Customer/S.Provider";
 				var HeadTitle2 = "STS|Partner|Lane|Invoice No|Slip No|Approved|Rev/Exp|Item|Curr.|Revenue|Expense|Code|Name";
-				
+
 				SetConfig( { SearchMode:2, MergeSheet:5, Page:20, FrozenCol:0, DataRowMerge:1 } );
-				
-	            var info    = { Sort:1, ColMove:1, HeaderCheck:0, ColResize:1 };
-	            var headers = [ { Text: HeadTitle1, Align: "Center"},
-	                            { Text: HeadTitle2, Align: "Center"}];
-	            InitHeaders(headers, info);
-	            
-	            var cols = [ 
-		       	             { Type: "Status", Hidden: 1, Width: 50,  Align: "Center", ColMerge: 0, SaveName: "ibflag" },
-		       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "jo_crr_cd",       KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}, 
-		       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "rlane_cd",        KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}, 
-		       	             { Type: "Text",   Hidden: 0, Width: 150, Align: "Center", ColMerge: 0, SaveName: "inv_no",          KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}, 
-		       	             { Type: "Text",   Hidden: 0, Width: 200, Align: "Center", ColMerge: 0, SaveName: "csr_no",          KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}, 
-		       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "apro_flg",        KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
-		       	             { Type: "Combo",  Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "rev_exp",         KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0, ComboText: "Rev|Exp", ComboCode: "R|E"},
-		       	          	 { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "item",        	 KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
-		       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "locl_curr_cd",    KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
-		       	             { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "inv_rev_act_amt", KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
-		       	          	 { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "inv_exp_act_amt", KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
-		       	          	 { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "prnr_ref_no",     KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
-		       	          	 { Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "cust_vndr_eng_nm",KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}
-		       	             ];
-		            InitColumns(cols);
-					SetEditable(1);
-					SetAutoSumPosition(1);
-					SetWaitImageVisible(0);
-					SetSheetHeight(500);
-					resizeSheet();
+
+				var info    = { Sort:1, ColMove:1, HeaderCheck:0, ColResize:1 };
+				var headers = [ { Text: HeadTitle1, Align: "Center"},
+					{ Text: HeadTitle2, Align: "Center"}];
+				InitHeaders(headers, info);
+
+				var cols = [
+					{ Type: "Status", Hidden: 1, Width: 50,  Align: "Center", ColMerge: 0, SaveName: "ibflag" },
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "jo_crr_cd",       KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "rlane_cd",        KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 150, Align: "Center", ColMerge: 0, SaveName: "inv_no",          KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 200, Align: "Center", ColMerge: 0, SaveName: "csr_no",          KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "apro_flg",        KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Combo",  Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "rev_exp",         KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0, ComboText: "Rev|Exp", ComboCode: "R|E"},
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "item",        	 KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "locl_curr_cd",    KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "inv_rev_act_amt", KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "inv_exp_act_amt", KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "prnr_ref_no",     KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0},
+					{ Type: "Text",   Hidden: 0, Width: 100, Align: "Center", ColMerge: 0, SaveName: "cust_vndr_eng_nm",KeyField: 1, Format: "", UpdateEdit: 0, InsertEdit: 0}
+				];
+				InitColumns(cols);
+				SetEditable(1);
+				SetAutoSumPosition(1);
+				SetWaitImageVisible(0);
+				SetSheetHeight(500);
+				resizeSheet();
 			}
 			break;
 	}
@@ -232,13 +231,13 @@ function initSheet(sheetObj,sheetNo) {
 function doActionIBSheet(sheetObj,formObj,sAction) {
 	switch (sAction) {
 		case IBSEARCH: // retrieve
- 			if (sheetObj.id == "sheet1" ) {
- 				ComOpenWait(true);
- 				// formObj - hidden input content value action ex MULTI, SEARCH
- 				formObj.f_cmd.value = SEARCH;
- 				// FormQueryString only get data from input form
- 				// *getSaveString in getSaveData from DoSave get data from sheet
- 	 			sheetObj.DoSearch("ESM_DOU_0108GS.do", FormQueryString(formObj));
+			if (sheetObj.id == "sheet1" ) {
+				ComOpenWait(true);
+				// formObj - hidden input content value action ex MULTI, SEARCH
+				formObj.f_cmd.value = SEARCH;
+				// FormQueryString only get data from input form
+				// *getSaveString in getSaveData from DoSave get data from sheet
+				sheetObj.DoSearch("ESM_DOU_0108GS.do", FormQueryString(formObj));
 			}
 			else if (sheetObj.id == "sheet2"){
 				ComOpenWait(true);
@@ -282,11 +281,11 @@ function initPeriod() {
 	var ymTo = ComGetNowInfo("ym", "-");
 	formObj.acct_yrmon_to.value = ymTo;
 	var ymFrom = ComGetDateAdd(formObj.acct_yrmon_to.value + "-01", "M", -2);
-	formObj.acct_yrmon_from.value = setDateFormat(ymFrom, "ym");
+	formObj.acct_yrmon_from.value = SetDateFormat(ymFrom, "ym");
 }
 
 // Set format date
-function setDateFormat(obj, sFormat) {
+function SetDateFormat(obj, sFormat) {
 	var objDate = String(getArgValue(obj));
 	objDate = objDate.replace(/\/|\-|\.|\:|\ /g, "");
 	if (ComIsEmpty(objDate))
@@ -294,9 +293,9 @@ function setDateFormat(obj, sFormat) {
 
 	var dateFormat = "";
 	switch (sFormat) {
-	case "ym":
-		dateFormat = objDate.substring(0, 6);
-		break;
+		case "ym":
+			dateFormat = objDate.substring(0, 6);
+			break;
 	}
 	dateFormat = ComGetMaskedValue(dateFormat, sFormat);
 	return dateFormat;
@@ -327,12 +326,12 @@ function excuteCheck() {
 }
 
 // Handling event after change yearmonth
-function yearmonth_Onchange() {
+function yearmonth_onchange() {
 	sheetObjects[0].RemoveAll();
 	sheetObjects[1].RemoveAll();
 }
 
-// Check if between from date and to date over three months
+// Check between from date and to date over three month
 function checkOverThreeMonth() {
 	var formObj = document.form;
 	var fromDate = formObj.acct_yrmon_from.value.replaceStr("-", "") + "01";
@@ -359,14 +358,14 @@ function initCombo(comboObj, comboNo) {
 	// alias for document.form
 	var formObj = document.form
 	switch (comboNo) {
-	case 1:
-		with (comboObj) {
-			SetMultiSelect(1);
-			SetDropHeight(200);
-			ValidChar(2, 1);
-		}
-		var comboItems = partnerCombo.split("|");
-		addComboItem(comboObj, comboItems);
+		case 1:
+			with (comboObj) {
+				SetMultiSelect(1);
+				SetDropHeight(200);
+				ValidChar(2, 1);
+			}
+			var comboItems = partnerCombo.split("|");
+			addComboItem(comboObj, comboItems);
 	}
 }
 
@@ -378,7 +377,7 @@ function addComboItem(comboObj, comboItems) {
 			comboObj.InsertItem(i, comboItem[0], comboItem[0]);
 		} else {
 			comboObj.InsertItem(i, comboItem[0] + "|" + comboItem[1],
-					comboItem[1]);
+				comboItem[1]);
 		}
 	}
 }
@@ -404,7 +403,7 @@ function getLaneComboData() {
 	s_trade_cd.RemoveAll();
 	document.form.f_cmd.value = SEARCH01;
 	var xml = sheetObjects[0].GetSearchData("ESM_DOU_0108GS.do",
-			FormQueryString(document.form));
+		FormQueryString(document.form));
 	lanes = ComGetEtcData(xml, "lanes");
 	generDataCombo(comboObjects[1], lanes);
 	if (s_rlane_cd.GetItemCount() > 0) {
@@ -419,7 +418,7 @@ function getTradeComboData() {
 	s_trade_cd.RemoveAll();
 	document.form.f_cmd.value = SEARCH02;
 	var xml = sheetObjects[0].GetSearchData("ESM_DOU_0108GS.do",
-			FormQueryString(document.form));
+		FormQueryString(document.form));
 	trades = ComGetEtcData(xml, "trades");
 	generDataCombo(comboObjects[2], trades);
 	if (s_trade_cd.GetItemCount() > 0) {
@@ -461,7 +460,6 @@ function s_jo_crr_cd_OnCheckClick(Index, Code, Checked) {
 		}
 	}
 	if (checkSelectCount == 0) {
-		// Recheck "All" item and uncheck/disable others
 		s_jo_crr_cd.SetItemCheck(0, true, false);
 		s_rlane_cd.RemoveAll();
 		s_trade_cd.RemoveAll();
@@ -470,25 +468,18 @@ function s_jo_crr_cd_OnCheckClick(Index, Code, Checked) {
 	}
 }
 
+// Handling event when lane combo change
+function s_rlane_cd_OnChange() {
+	s_trade_cd.SetEnable(true);
+	getTradeComboData();
+
+}
 //Handling event when user done select parter item
 function s_jo_crr_cd_OnBlur(){
 	ComOpenWait(true);
 	getLaneComboData();
 	ComOpenWait(false);
 }
-
-//function s_rlane_cd_OnBlur(){
-//	ComOpenWait(true);
-//	getTradeComboData();
-//	ComOpenWait(false);
-//}
-
-//Handling event when lane combo change
- function s_rlane_cd_OnChange() {
- 	s_trade_cd.SetEnable(true);
- 	getTradeComboData();
-
- }
 
 // {setTabObject} to put combo objects in global variable "tabObjects"
 function setTabObject(tab_obj) {
@@ -500,13 +491,13 @@ function setTabObject(tab_obj) {
 // {initTab} functions that define the basic properties of the tab on the screen
 function initTab(tabObj, tabNo) {
 	switch (tabNo) {
-	case 1:
-		with (tabObj) {
-			var cnt = 0;
-			InsertItem("Summary", "");
-			InsertItem("Detail", "");
-		}
-		break;
+		case 1:
+			with (tabObj) {
+				var cnt = 0;
+				InsertItem("Summary", "");
+				InsertItem("Detail", "");
+			}
+			break;
 	}
 }
 
@@ -524,7 +515,7 @@ function tab1_OnChange(tabObj, nItem) {
 	// ------------------------------------------------------//
 	beforeTab = nItem;
 	resizeSheet();
-} 
+}
 
 // Find position info
 function selectRowToOtherSheet(sheetFrom, sheetTo, Row, sFr, sTo){
@@ -542,14 +533,14 @@ function selectRowToOtherSheet(sheetFrom, sheetTo, Row, sFr, sTo){
 //			indexExpense  = sheetTo.FindText(8  + sTo,sheetFrom.GetCellValue(Row,8) ,i);
 			indexCode     = sheetTo.FindText(9  + sTo,sheetFrom.GetCellValue(Row,sFr + 9) ,i);
 			indexName     = sheetTo.FindText(10 + sTo,sheetFrom.GetCellValue(Row,sFr + 10),i);
-			if (indexLane == indexPartner && 
-					indexInvoice == indexLane &&
-					indexSlip == indexInvoice && 
-					indexApproved == indexSlip && 
-					indexCurr == indexApproved && 
-					indexRevenue == indexCurr && 
-					indexCode == indexRevenue && 
-					indexName == indexCode){
+			if (indexLane == indexPartner &&
+				indexInvoice == indexLane &&
+				indexSlip == indexInvoice &&
+				indexApproved == indexSlip &&
+				indexCurr == indexApproved &&
+				indexRevenue == indexCurr &&
+				indexCode == indexRevenue &&
+				indexName == indexCode){
 				indexSelected = i;
 				break;
 			}
@@ -575,25 +566,13 @@ function sheet1_OnDblClick(sheetObj, Row, Col, CellX, CellY, CellW, CellH){
 		return;
 	}
 	else{
-		selectRowToOtherSheet(sheetObj, sheetObjectxs[1],Row,0,2);
+		selectRowToOtherSheet(sheetObj, sheetObjects[1],Row,0,2);
 		tab1.SetSelectedIndex(1);
 	}
 }
 
-// handling event double click when double click one row in sheet2
-function sheet2_OnDblClick(sheetObj, Row, Col, CellX, CellY, CellW, CellH){
-	var formObj = document.form;
-	if (sheetObj.GetCellValue(Row,"jo_crr_cd") == ''){
-		return;
-	}
-	else{
-		selectRowToOtherSheet(sheetObj, sheetObjects[0],Row,2,0);
-		tab1.SetSelectedIndex(0);
-	}
-}
-
 // Handling event after searching sheet1
-function sheet1_OnSearchEnd(sheetObj, Code, Msg, StCode, StMsg) { 
+function sheet1_OnSearchEnd(sheetObj, Code, Msg, StCode, StMsg) {
 	ComOpenWait(false);
 	var totalRow = sheetObj.RowCount();
 	for (var i = 1; i <= totalRow+1; i++){
@@ -615,7 +594,7 @@ function sheet1_OnSearchEnd(sheetObj, Code, Msg, StCode, StMsg) {
 }
 
 // Handling event after searching sheet2
-function sheet2_OnSearchEnd(sheetObj, Code, Msg, StCode, StMsg) { 
+function sheet2_OnSearchEnd(sheetObj, Code, Msg, StCode, StMsg) {
 	ComOpenWait(false);
 	var totalRow = sheetObj.RowCount();
 	for (var i = 1; i <= totalRow+1; i++){
