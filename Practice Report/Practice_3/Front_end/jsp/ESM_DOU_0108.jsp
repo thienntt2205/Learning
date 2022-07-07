@@ -97,16 +97,11 @@
                     <td width="350">
                         <input type="text" style="width: 100px;" class="input1" value="" name="acct_yrmon_from"
                                id="acct_yrmon_from"><!--
-							-->
-                        <button type="button" class="btn_left" name="btn_datefrom_down" id="btn_datefrom_down"></button><!--
-							-->
-                        <button type="button" class="btn_right" name="btn_datefrom_up" id="btn_datefrom_up"></button><!--
-							--><input type="text" style="width: 100px;" class="input1" value="" name="acct_yrmon_to"
-                                      id="acct_yrmon_to"><!--
-							-->
-                        <button type="button" class="btn_left" name="btn_dateto_down" id="btn_dateto_down"></button><!--
-							-->
-                        <button type="button" class="btn_right" name="btn_dateto_up" id="btn_dateto_up"></button>
+							--><button type="button" class="btn_left" name="btn_datefrom_down" id="btn_datefrom_down"></button><!--
+							--><button type="button" class="btn_right" name="btn_datefrom_up" id="btn_datefrom_up"></button><!--
+							--><input type="text" style="width: 100px;" class="input1" value="" name="acct_yrmon_to"  id="acct_yrmon_to"><!--
+							--><button type="button" class="btn_left" name="btn_dateto_down" id="btn_dateto_down"></button><!--
+							--><button type="button" class="btn_right" name="btn_dateto_up" id="btn_dateto_up"></button>
                     </td>
                     <th width="70">Partner</th>
                     <td width="70">

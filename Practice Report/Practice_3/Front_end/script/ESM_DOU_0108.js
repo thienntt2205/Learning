@@ -546,7 +546,7 @@ function selectRowToOtherSheet(sheetFrom, sheetTo, Row, sFr, sTo){
 			}
 		}
 	}
-	console.log(indexSelected);
+	// console.log(indexSelected);
 	sheetTo.SetSelectRow(indexSelected);
 }
 
@@ -579,13 +579,13 @@ function sheet1_OnSearchEnd(sheetObj, Code, Msg, StCode, StMsg) {
 		if (sheetObj.GetCellValue(i, "jo_crr_cd") == ''){
 			if (sheetObj.GetCellValue(i, "inv_no") !== ''){
 				// change default font color
-				sheetObj.SetRowFontColor(i,"#ff3300");
+				sheetObj.SetRowFontColor(i,"#c95a11");
 				sheetObj.SetRangeFontBold(i,1,i,10,1);
 				sheetObj.SetCellValue(i,"inv_no","");
 			}
 			else if (sheetObj.GetCellValue(i,"inv_no") == ''){
 				// change default cell color
-				sheetObj.SetRowBackColor(i,"#ff9933");
+				sheetObj.SetRowBackColor(i,"#f7caac");
 				sheetObj.SetRangeFontBold(i,1,i,10,1);
 			}
 
@@ -600,12 +600,12 @@ function sheet2_OnSearchEnd(sheetObj, Code, Msg, StCode, StMsg) {
 	for (var i = 1; i <= totalRow+1; i++){
 		if (sheetObj.GetCellValue(i, "jo_crr_cd") == ''){
 			if (sheetObj.GetCellValue(i, "inv_no") !== ''){
-				sheetObj.SetRowFontColor(i,"#ff3300");
+				sheetObj.SetRowFontColor(i,"#c95a11");
 				sheetObj.SetRangeFontBold(i,1,i,12,1);
 				sheetObj.SetCellValue(i,"inv_no","");
 			}
 			else if (sheetObj.GetCellValue(i,"inv_no") == ''){
-				sheetObj.SetRowBackColor(i,"#ff9933");
+					sheetObj.SetRowBackColor(i,"#f7caac");
 				sheetObj.SetRangeFontBold(i,1,i,12,1);
 			}
 
