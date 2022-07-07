@@ -126,21 +126,22 @@
         </div>
     </div>
 
-  <div class="wrap_result">
-		<div class="opus_design_tab">
-			<script type="text/javascript">ComTabObject('tab1')</script>
+	<div class="wrap_result">
+		<div class="opus_design_tab sm">
+			<script type="text/javascript">
+				ComTabObject('tab1')
+			</script>
 		</div>
-		<div class=“opus_design_inquiry”>
-			<div class="opus_design_grid" name="tabLayer" id="tabLayer">
-				<script language="javascript">ComSheetObject('sheet1');</script>
-			</div>
+		<div class="opus_design_grid" name="tabLayer" id="tabLayer">
+			<script language="javascript">
+				ComSheetObject('sheet1');
+			</script>
 		</div>
-		<div class=“opus_design_inquiry”>
-			<div class="opus_design_grid" name="tabLayer" id="tabLayer">
-				<script language="javascript">ComSheetObject('sheet2');</script>
-			</div>
+		<div class="opus_design_grid" name="tabLayer" id="tabLayer">
+			<script language="javascript">
+				ComSheetObject('sheet2');
+			</script>
 		</div>
-		
 	</div>
 	<!-- End of developer work -->
 </form>
