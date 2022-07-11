@@ -17,10 +17,22 @@ import com.clt.framework.support.controller.html.FormCommand;
 import com.clt.framework.support.layer.service.ServiceCommandSupport;
 import com.clt.framework.support.view.signon.SignOnUserAccount;
 
+/**
+ * ALPS-ESM_DOU_0108 Business Logic ServiceCommand - Process the business
+ * transaction for ALPS-ESM_DOU_0108.
+ *
+ * @author Thien
+ * @see JooCarrierDBDAO
+ * @since J2EE 1.6
+ */
 public class ESM_DOU_0108SC extends ServiceCommandSupport {
 	// Login User Information
 	private SignOnUserAccount account = null;
 
+	/**
+	 * ESM_DOU_0108 system task scenario precedent work<br>
+	 * Creating related internal objects when calling a business scenario<br>
+	 */
 	public void doStart() {
 		log.debug("ESM_DOU_0108SC start");
 		try {
@@ -30,12 +42,29 @@ public class ESM_DOU_0108SC extends ServiceCommandSupport {
 		}
 	}
 
+	/**
+	 * ESM_DOU_0108 system task scenario finishing work<br>
+	 * Release related internal objects when the work scenario is finished<br>
+	 */
 	public void doEnd() {
 		log.debug("ESM_DOU_0108SC end");
 	}
 
+	/**
+	 * Carry out business scenarios for each event<br>
+	 * Branch processing of all events that occur in the ALPS-ESM_DOU_0108
+	 * system business<br>
+	 *
+	 * @param Event e
+	 *
+	 * @return EventResponse
+	 * @exception EventException
+	 */
 	public EventResponse perform(Event e) throws EventException {
+		// RDTO(Data Transfer Object including Parameters)
 		EventResponse eventResponse = null;
+
+		// The part to use when SC handles multiple events
 		if (e.getEventName().equalsIgnoreCase("ESM_DOU_0108Event")) {
 			if (e.getFormCommand().isCommand(FormCommand.SEARCH)) {
 				eventResponse = searchSummary(e);
@@ -52,6 +81,14 @@ public class ESM_DOU_0108SC extends ServiceCommandSupport {
 		return eventResponse;
 	}
 
+	/**
+	 * ESM_DOU_0108 : [searchJooCarrierSummary]<br>
+	 * Search data for summary tab.<br>
+	 *
+	 * @param Event e
+	 * @return EventResponse
+	 * @exception EventException
+	 */
 	private EventResponse searchSummary(Event e) throws EventException {
 		// PDTO(Data Transfer Object including Parameters)
 		GeneralEventResponse eventResponse = new GeneralEventResponse();
@@ -70,6 +107,14 @@ public class ESM_DOU_0108SC extends ServiceCommandSupport {
 		return eventResponse;
 	}
 
+	/**
+	 * ESM_DOU_0108 : [searchJooCarrierDetail]<br>
+	 * Search data for detail tab.<br>
+	 *
+	 * @param Event e
+	 * @return EventResponse
+	 * @exception EventException
+	 */
 	private EventResponse searchDetail(Event e) throws EventException {
 		// PDTO(Data Transfer Object including Parameters)
 		GeneralEventResponse eventResponse = new GeneralEventResponse();
@@ -89,6 +134,14 @@ public class ESM_DOU_0108SC extends ServiceCommandSupport {
 	}
 
 	// search partner
+	/**
+	 * ESM_DOU_0108 : [initDataPartner]<br>
+	 * Load data Partner into eventResponse use ETC Data.<br>
+	 *
+	 *
+	 * @return EventResponse
+	 * @exception EventException
+	 */
 	private EventResponse initData() throws EventException {
 		// PDTO(Data Transfer Object including Parameters)
 		GeneralEventResponse eventResponse = new GeneralEventResponse();
@@ -115,6 +168,14 @@ public class ESM_DOU_0108SC extends ServiceCommandSupport {
 		return eventResponse;
 	}
 
+	/**
+	 * ESM_DOU_0108 : [searchRlane]<br>
+	 * Load data Rlane use ETC Data.<br>
+	 *
+	 * @param Event e
+	 * @return EventResponse
+	 * @exception EventException
+	 */
 	private EventResponse searchLane(Event e) throws EventException {
 		GeneralEventResponse eventResponse = new GeneralEventResponse();
 		ESM_DOU_0108Event event = (ESM_DOU_0108Event) e;
@@ -139,6 +200,15 @@ public class ESM_DOU_0108SC extends ServiceCommandSupport {
 		}
 		return eventResponse;
 	}
+
+	/**
+	 * ESM_DOU_0108 : [searchTrade]<br>
+	 * Load data Trade use ETC Data.<br>
+	 *
+	 * @param Event e
+	 * @return EventResponse
+	 * @exception EventException
+	 */
 	private EventResponse searchTrade(Event e) throws EventException {
 		GeneralEventResponse eventResponse = new GeneralEventResponse();
 		ESM_DOU_0108Event event = (ESM_DOU_0108Event) e;
