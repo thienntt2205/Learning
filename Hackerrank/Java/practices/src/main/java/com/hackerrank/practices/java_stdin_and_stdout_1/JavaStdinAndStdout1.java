@@ -8,6 +8,7 @@ public class JavaStdinAndStdout1 {
         int myInt1 = scanner.nextInt();
         int myInt2 = scanner.nextInt();
         int myInt3 = scanner.nextInt();
+        scanner.close();
         System.out.println(myInt1);
         System.out.println(myInt2);
         System.out.println(myInt3);

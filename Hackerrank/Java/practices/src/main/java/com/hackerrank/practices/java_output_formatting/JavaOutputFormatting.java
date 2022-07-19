@@ -14,6 +14,7 @@ public class JavaOutputFormatting {
         for (int i = 0; i < 3; i++) {
             String myString = scanner.next();
             int myInt = scanner.nextInt();
+            scanner.close();
             System.out.format("%-15s%03d%n", myString, myInt);
         }
         System.out.println("================================");

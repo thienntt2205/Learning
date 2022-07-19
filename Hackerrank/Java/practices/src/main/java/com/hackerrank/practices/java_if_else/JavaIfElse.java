@@ -6,6 +6,7 @@ public class JavaIfElse {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int myInt = scanner.nextInt();
+        scanner.close();
         if (myInt % 2 == 1) {
             System.out.println("Weird");
         } else {
