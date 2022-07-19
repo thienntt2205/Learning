@@ -3,7 +3,6 @@ package com.hackerrank.practices.java_output_formatting;
 import java.util.Scanner;
 
 public class JavaOutputFormatting {
-
     //    The "-" is used to left indent
 //    The "15" makes the String's minimum length it takes up be 15
 //    The "s" (which is a few characters after %) will be substituted by our String
