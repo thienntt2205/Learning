@@ -14,7 +14,7 @@
 | Standby           | Development, Deploy | Process labeling, review code, review funcspec, deploy to staging, testing          |
 | Allocation        | Deploy phase        | Review code, review funcspec, deploy to staging, prepare video,deploy to production |
 
-**Dev Load status**
+**Dev Work Load status**
 
 | Assignee | Total User story point |
 | -------- | ---------------------- |
