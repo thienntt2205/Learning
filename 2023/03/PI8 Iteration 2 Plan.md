@@ -6,8 +6,8 @@
 
 | Package name      | Status              | This iteration commitment                                                           |
 | ----------------- | ------------------- | ----------------------------------------------------------------------------------- |
-| COA               | Design phase        | Design review, Verify UAT environment, Finalizing requirement                       |
-| COP               | Design phase        | Review Cognos detail, prepare Looker funcspec                                       |
+| COA               | Kick Strat          |
+| COP               | Kick Start          |
 | BSA               | Deploy phase        | Testing, review code, deploy to staging                                             |
 | Bottleneck        | Deploy phase        | Testing, review code, deploy to staging, prepare video, deploy to production        |
 | Snapshot Forecast | Deploy phase        | Review code, review funcspec, deploy to staging, prepare video,deploy to production |
