@@ -4,15 +4,15 @@
 
 **Overall Progress**
 
-| Package name      | Status              | This iteration commitment                                                           |
+| Package name      | Status              | Target                                                          |
 | ----------------- | ------------------- | ----------------------------------------------------------------------------------- |
-| COA               | Kick Strat          |
-| COP               | Kick Start          |
-| BSA               | Deploy phase        | Testing, review code, deploy to staging                                             |
-| Bottleneck        | Deploy phase        | Testing, review code, deploy to staging, prepare video, deploy to production        |
-| Snapshot Forecast | Deploy phase        | Review code, review funcspec, deploy to staging, prepare video,deploy to production |
-| Standby           | Development, Deploy | Process labeling, review code, review funcspec, deploy to staging, testing          |
-| Allocation        | Deploy phase        | Review code, review funcspec, deploy to staging, prepare video,deploy to production |
+| COA               | Kick Strat          | Review, design funcspec |
+| COP               | Kick Start          | Review, design funcspec  |
+| BSA               | Deploy phase        | deploy to staging                                             |
+| Bottleneck        | Deploy phase        | deploy to production        |
+| Snapshot Forecast | Deploy phase        | deploy to production |
+| Standby           | Development, Deploy | deploy to staging        |
+| Allocation        | Deploy phase        | deploy to production |
 
 **Dev Work Load status**
 
@@ -39,3 +39,8 @@ Check all packages,
 - If they need some ajustment like need more subtask related to review, testing, deploy
 - Try to annouce with hub team ASAP 1st week
 - We trying to reduce subtask, if not really need, we can skip clone task and stick to work log feature
+
+Iteration objectives
+1. Deploy to production: Allocation, Bottleneck, Snapshot Forecast
+2. Deploy to staging : BSA, Standby
+3. Kick start: draft design for COA, COP
