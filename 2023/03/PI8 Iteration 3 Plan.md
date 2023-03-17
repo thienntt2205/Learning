@@ -7,10 +7,10 @@
 | Package name            | Status                    | Target                              |
 | ----------------------- | ------------------------- | ----------------------------------- |
 | Space Allocation        | Deploy phase - Production | Deploy to production                |
-| Standby Booking         | Development               | Get Ready For Code Review           |
+| Space Bottleneck        | Deploy phase - Production | Deploy to production                |
 | BSA                     | Deploy phase - Production | Get Ready For Production Deployment |
 | Space Snapshot Forecast | Deploy phase - Production | Get Ready For Production Deployment |
-| Space Bottleneck        | Deploy phase - Production | Deploy to production                |
+| Standby Booking         | Development               | Get Ready For Code Review           |
 | COA                     | Development               | Labeling                            |
 | COP                     | Development               | Labeling                            |
 
