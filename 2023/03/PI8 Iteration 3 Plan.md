@@ -19,10 +19,10 @@
 | Assignee | Total User story point |
 | -------- | ---------------------- |
 | Gabriel  | 14.25                  |
+| Robert   | 7                      |
 | Alex     | 9.5                    |
 | Hutson   | 9.25                   |
 | Quin     | 7.5                    |
-| Robert   | 7                      |
 
 ## Situation summary
 
