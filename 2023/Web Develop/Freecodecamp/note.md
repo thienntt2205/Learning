@@ -32,3 +32,9 @@
   - `name` attribute and assign it a value to represent the data being submitted.
 
 - Use the `button` element to create a clickable button.
+
+- In order to make a checkbox checked or radio button selected by default, you need to add the `checked` attribute to it. There's no need to set a value to the checked attribute. Instead, just add the word checked to the input element, making sure there is space between it and other attributes.
+
+- All page content elements that should be rendered to the page go inside the `body`
+- Other important information goes inside the `head` element.
+- All pages should begin with `<!DOCTYPE html>`. This special string is known as a declaration and ensures the browser tries to meet industry-wide specifications.
