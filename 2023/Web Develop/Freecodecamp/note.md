@@ -38,3 +38,13 @@
 - All page content elements that should be rendered to the page go inside the `body`
 - Other important information goes inside the `head` element.
 - All pages should begin with `<!DOCTYPE html>`. This special string is known as a declaration and ensures the browser tries to meet industry-wide specifications.
+- To start taking control presentation and appearance of the content add `style` element within `head` element
+
+- For the styling of the page to look similar on mobile as it does on a desktop or laptop, you need to add a `meta` element with a special `content` attribute.
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+```
+
+- The div element is used mainly for design layout purposes unlike the other content elements you have used so far.
+
+- article elements commonly contain multiple elements that have related information
