@@ -41,6 +41,7 @@
 - To start taking control presentation and appearance of the content add `style` element within `head` element
 
 - For the styling of the page to look similar on mobile as it does on a desktop or laptop, you need to add a `meta` element with a special `content` attribute.
+
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 ```
@@ -48,3 +49,8 @@
 - The div element is used mainly for design layout purposes unlike the other content elements you have used so far.
 
 - article elements commonly contain multiple elements that have related information
+
+- The `class` attribute is part of the Global Attributes, and can be used on any HTML element.
+
+- `padding` (css)add more space between the content and the sides
+- The default properties of an `hr` element will make it appear as a thin light grey line. You can change the height of the line by specifying a value for the height property.
