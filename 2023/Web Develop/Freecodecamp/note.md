@@ -55,3 +55,8 @@
 - `padding` (css)add more space between the content and the sides
 - The default properties of an `hr` element will make it appear as a thin light grey line. You can change the height of the line by specifying a value for the height property.
 - Add another self-closing meta element within the head. Give it a name attribute set to viewport and a content attribute set to width=device-width, initial-scale=1.0 so your page looks the same on all devices.
+-  Multiple classes can be added to an element by listing them in the `class` attribute and separating them with a space. 
+- With hex colors, 00 is 0% of that color, and FF is 100%.
+  - Hexadecimal base 16 values, go from 0 - 9, then A - F
+- A gradient is when one color transitions into another. The CSS `linear-gradient` function lets you control the direction of the transition along a line, and which colors are used.
+  - `linear-gradient` function actually creates an image element, and is usually paired with the background property which can accept an image as a value.
