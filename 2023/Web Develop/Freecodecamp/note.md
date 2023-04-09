@@ -54,3 +54,4 @@
 
 - `padding` (css)add more space between the content and the sides
 - The default properties of an `hr` element will make it appear as a thin light grey line. You can change the height of the line by specifying a value for the height property.
+- Add another self-closing meta element within the head. Give it a name attribute set to viewport and a content attribute set to width=device-width, initial-scale=1.0 so your page looks the same on all devices.
