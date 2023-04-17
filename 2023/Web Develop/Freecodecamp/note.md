@@ -60,3 +60,16 @@
   - Hexadecimal base 16 values, go from 0 - 9, then A - F
 - A gradient is when one color transitions into another. The CSS `linear-gradient` function lets you control the direction of the transition along a line, and which colors are used.
   - `linear-gradient` function actually creates an image element, and is usually paired with the background property which can accept an image as a value.
+    - If no gradientDirection argument is provided to the linear-gradient function, it arranges colors from top to bottom, or along a 180 degree line, by default.
+  - CSS `opacity` property, you can control how opaque or transparent an element is. With the value 0, or 0%, the element will be completely transparent, and at 1.0, or 100%, the element will be completely opaque like it is by default.
+  - CSS The `rgba` function works just like the rgb function, but takes one more number from 0 to 1.0 for the alpha channel:
+  - CSS The `box-shadow` property lets you apply one or more shadows around an element. basic syntax:
+  ```css
+  box-shadow: offsetX offsetY color;
+  ```
+    - how the offsetX and offsetY values work:
+      - both offsetX and offsetY accept number values in px and other CSS units
+      - a positive offsetX value moves the shadow right and a negative value moves it left
+      - a positive offsetY value moves the shadow down and a negative value moves it up
+      - if you want a value of zero (0) for any or both offsetX and offsetY, you don't need to add a unit. Every browser understands that zero means no change.
+    - The height and width of the shadow is determined by the height and width of the element it's applied to. You can also use an optional spreadRadius value to spread out the reach of the shadow. More on that later.
