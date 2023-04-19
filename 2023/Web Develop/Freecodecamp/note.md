@@ -73,3 +73,6 @@
       - a positive offsetY value moves the shadow down and a negative value moves it up
       - if you want a value of zero (0) for any or both offsetX and offsetY, you don't need to add a unit. Every browser understands that zero means no change.
     - The height and width of the shadow is determined by the height and width of the element it's applied to. You can also use an optional spreadRadius value to spread out the reach of the shadow. More on that later.
+    - CSS The `vh` unit stands for viewport height, and is relative to 1% of the `height` of the viewport.
+    - The `method` attribute specifies how to send form-data to the URL specified in the action attribute. The form-data can be sent via a GET request as URL parameters (with method="get") or via a POST request as data in the request body (with method="post").
+    - CSS The `rem` unit stands for root em, and is relative to the font size of the html element.
